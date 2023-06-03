@@ -2,7 +2,14 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import Home from "./Components/Home";
 import About from "./Components/About";
-import { Nav, NavDropdown, Navbar, NavbarBrand } from "react-bootstrap";
+import Blog from "./Components/Blog";
+import {
+  Nav,
+  NavDropdown,
+  NavItem,
+  Navbar,
+  NavbarBrand,
+} from "react-bootstrap";
 function App() {
   return (
     <div className="">
@@ -17,13 +24,17 @@ function App() {
               id="navvbar-navv"
               style={{ justifyContent: "end" }}
             >
-              <Nav className="">
-                <Link to="/" className="nav-link">
-                  Home
-                </Link>
-                <Link to="/about" className="nav-link">
-                  About
-                </Link>
+              <Nav>
+                <NavItem>
+                  <Link to="/" className="nav-link">
+                    Home
+                  </Link>
+                </NavItem>
+                <NavItem>
+                  <Link to="/about" className="nav-link">
+                    About
+                  </Link>
+                </NavItem>
                 <NavDropdown title="Category" id="navv-dropdown">
                   <NavDropdown.Item>
                     <Link to="/about" className="nav-link">
@@ -31,7 +42,7 @@ function App() {
                     </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to="/about" className="nav-link">
+                    <Link to="/" className="nav-link">
                       B-Category
                     </Link>
                   </NavDropdown.Item>
@@ -47,6 +58,7 @@ function App() {
             element={<Home name={{ page: "/// Home Page ///" }}></Home>}
           ></Route>
           <Route path="/about" element={<About></About>}></Route>
+          <Route path="/blogg" element={<Blog></Blog>}></Route>
         </Routes>
         {/* ////////////////////////////////////////////////////// */}
       </Router>
@@ -54,6 +66,7 @@ function App() {
 
       {/* //////////////////////////////////////////////////// */}
       {/* <Home name={{ page: "/// Home Page ///" }}></Home> */}
+      {/* <Blog></Blog> */}
     </div>
   );
 }
