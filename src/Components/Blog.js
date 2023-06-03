@@ -14,23 +14,31 @@ function Blog() {
       });
   }, []);
   return (
-    <div className="text-center">
-      <h3 className="pt-5 pb-5 bg-info">------------BLOGGGG----------</h3>
+    <div>
+      <h3 className="fs-1 fw-bolder text-center pt-5 pb-5 bg-info">
+        ------------The Blog----------
+      </h3>
+      <div className="container text-center">
+        {/* //// */}
 
-      {/* //// */}
-      <div className="row">
-        {data.map((item) => (
-          <div className="col-lg-4">
-            <div className="card mb-5 border-success" key={item.id}>
-              <div className="card-title p-3">
-                <h5>{item.title}</h5>
-              </div>
-              <div className="card-body">
-                <p>{item.body}</p>
+        <div className="row">
+          {data.map((item) => (
+            <div className="col-lg-4">
+              <div
+                style={{ height: 300 }}
+                className="card mb-5 border-success"
+                key={item.id}
+              >
+                <div className="card-title p-3">
+                  <h5>{item.title}</h5>
+                </div>
+                <div className="card-body">
+                  <p>{item.body}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

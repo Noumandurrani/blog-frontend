@@ -20,7 +20,11 @@ function LatestPost() {
       <div className="row">
         {slctCrd.map((item) => (
           <div className="col-lg-4">
-            <div className="card mb-5 border-success" key={item.id}>
+            <div
+              style={{ height: 300 }}
+              className="card mb-5 border-success"
+              key={item.id}
+            >
               <div className="card-title p-3">
                 <h5>{item.title}</h5>
               </div>

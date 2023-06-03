@@ -56,8 +56,19 @@ function Home(props) {
           </Link>
         </div>
       </div>
-      <h2 className="">My Latest Posts</h2>
+      <br></br>
+      <br></br>
+      <h2 className="mb-4">My Latest Posts</h2>
       <LatestPost></LatestPost>
+      <Link to="/blogg">
+        <button className="btn border border-dark px-5 pb-3 pt-3">
+          Read more
+        </button>
+      </Link>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
     </div>
   );
 }
