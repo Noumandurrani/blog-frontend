@@ -7,53 +7,91 @@ import bbb from "./bbb.jpg";
 import LatestPost from "./HomeComp/LatestPost";
 function Home(props) {
   return (
-    <div className="text-center">
-      <h3>{props.name.page}</h3>
-      <div className="row mb-5">
-        <div
-          className="col-lg-6 col-md-6"
-          style={{
-            height: 600,
-            backgroundImage: `url(${aaa})`,
-            backgroundSize: "100% 100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Link
-            to="/blogg"
+    <div className="text-center" style={{ marginTop: 85 }}>
+      {/* <h3>{props.name.page}</h3> */}
+      <div className="row mb-5 no-gutters">
+        <div className="col-lg-6 col-md-6 overflow-hidden p-0">
+          <div
+            className=""
             style={{
-              textDecoration: "none",
+              height: 600,
+              backgroundImage: `url(${aaa})`,
+              backgroundSize: "100% 100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transform: "scale(1.0)",
+              transformOrigin: "center",
+              transition: "0s ease",
+              position: "relative",
+            }}
+            onMouseOver={(e) => {
+              // e.target.style.backgroundSize = "150%";
+              e.target.style.transform = "scale(1.1)";
+              e.target.style.transformOrigin = "center";
+              e.target.style.transition = "2s ease";
+            }}
+            onMouseOut={(e) => {
+              // e.target.style.backgroundSize = "100% 100%";
+              e.target.style.transform = "scale(1.0)";
+              e.target.style.transformOrigin = "center";
+              e.target.style.transition = "2s ease";
             }}
           >
-            <h1>BLOG1</h1>
-          </Link>
-          {/* <Routes>
+            <Link
+              to="/blogg"
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              <h1>BLOG1</h1>
+            </Link>
+            {/* <Routes>
             <Route path="/blogg" element={<Blog></Blog>}></Route>
           </Routes> */}
+          </div>
         </div>
+
         {/* /////////////////////////////////////////// */}
-        <div
-          className="col-lg-6 col-md-6"
-          style={{
-            height: 600,
-            backgroundImage: `url(${bbb})`,
-            backgroundSize: "100% 100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Link
-            to="/blogg"
-            style={{
-              textDecoration: "none",
-            }}
+        <div className="col-lg-6 col-md-6 overflow-hidden p-0">
+          <div
             className=""
+            style={{
+              height: 600,
+              backgroundImage: `url(${bbb})`,
+              backgroundSize: "100% 100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transform: "scale(1.0)",
+              transformOrigin: "center",
+              overflow: "hidden",
+              transition: "0s ease",
+            }}
+            onMouseOver={(e) => {
+              // e.target.style.backgroundSize = "150%";
+              e.target.style.transform = "scale(1.1)";
+              e.target.style.transformOrigin = "center";
+              e.target.style.transition = "2s ease, backgroundSize 2s ease";
+              e.target.style.overflow = "hidden";
+            }}
+            onMouseOut={(e) => {
+              // e.target.style.backgroundSize = "100% 100%";
+              e.target.style.transform = "scale(1.0)";
+              e.target.style.transformOrigin = "center";
+              e.target.style.transition = "2s ease, backgroundSize 2s ease";
+            }}
           >
-            <h1>BLOG2</h1>
-          </Link>
+            <Link
+              to="/blogg"
+              style={{
+                textDecoration: "none",
+              }}
+              className=""
+            >
+              <h1>BLOG2</h1>
+            </Link>
+          </div>
         </div>
       </div>
       <br></br>

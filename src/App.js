@@ -13,10 +13,24 @@ import {
 function App() {
   return (
     <div className="">
-      <h1>-------------Blogging Site---------------</h1>
+      {/* <h1>-------------Blogging Site---------------</h1> */}
       {/* navbar */}
       <Router>
-        <Navbar bg="warning" expand="lg md">
+        <Navbar
+          bg="light"
+          expand="lg md"
+          style={{
+            position: "fixed",
+            left: 0,
+            right: 0,
+            top: 0,
+            paddingTop: 20,
+            paddingBottom: 20,
+            fontWeight: "bold",
+            fontSize: 18,
+            zIndex: 1000,
+          }}
+        >
           <div className="container">
             <Navbar.Brand href="#">Blog Logo</Navbar.Brand>
             <Navbar.Toggle aria-controls="navvbar-navv"></Navbar.Toggle>
@@ -28,6 +42,11 @@ function App() {
                 <NavItem>
                   <Link to="/" className="nav-link">
                     Home
+                  </Link>
+                </NavItem>
+                <NavItem>
+                  <Link to="/blogg" className="nav-link">
+                    Blog
                   </Link>
                 </NavItem>
                 <NavItem>

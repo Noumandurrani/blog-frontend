@@ -14,7 +14,7 @@ function Blog() {
       });
   }, []);
   return (
-    <div>
+    <div style={{ marginTop: 85 }}>
       <h3 className="fs-1 fw-bolder text-center pt-5 pb-5 bg-info">
         ------------The Blog----------
       </h3>

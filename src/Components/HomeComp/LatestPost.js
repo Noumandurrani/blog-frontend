@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 function LatestPost() {
   const [LatestPosts, setLatestPosts] = useState([]);
   useEffect(() => {
@@ -20,18 +21,20 @@ function LatestPost() {
       <div className="row">
         {slctCrd.map((item) => (
           <div className="col-lg-4">
-            <div
-              style={{ height: 300 }}
-              className="card mb-5 border-success"
-              key={item.id}
-            >
-              <div className="card-title p-3">
-                <h5>{item.title}</h5>
+            <Link className="text-decoration-none" to="/blogg">
+              <div
+                style={{ height: 300 }}
+                className="card mb-5 border-success"
+                key={item.id}
+              >
+                <div className="card-title p-3">
+                  <h5>{item.title}</h5>
+                </div>
+                <div className="card-body">
+                  <p>{item.body}</p>
+                </div>
               </div>
-              <div className="card-body">
-                <p>{item.body}</p>
-              </div>
-            </div>
+            </Link>
           </div>
         ))}
       </div>
