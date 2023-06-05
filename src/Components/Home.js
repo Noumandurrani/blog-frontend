@@ -2,12 +2,12 @@ import React from "react";
 import Blog from "./Blog";
 import About from "./About";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import aaa from "./aaa.jpg";
-import bbb from "./bbb.jpg";
+import aaa from "./Logos/aaa.jpg";
+import bbb from "./Logos/bbb.jpg";
 import LatestPost from "./HomeComp/LatestPost";
 function Home(props) {
   return (
-    <div className="text-center" style={{ marginTop: 85 }}>
+    <div className="text-center" style={{ marginTop: 120 }}>
       {/* <h3>{props.name.page}</h3> */}
       <div className="row mb-5 no-gutters">
         <div className="col-lg-6 col-md-6 overflow-hidden p-0">
@@ -23,25 +23,28 @@ function Home(props) {
               transform: "scale(1.0)",
               transformOrigin: "center",
               transition: "0s ease",
-              position: "relative",
+              color: "white",
             }}
             onMouseOver={(e) => {
               // e.target.style.backgroundSize = "150%";
               e.target.style.transform = "scale(1.1)";
               e.target.style.transformOrigin = "center";
               e.target.style.transition = "2s ease";
+              e.target.style.color = "red";
             }}
             onMouseOut={(e) => {
               // e.target.style.backgroundSize = "100% 100%";
               e.target.style.transform = "scale(1.0)";
               e.target.style.transformOrigin = "center";
               e.target.style.transition = "2s ease";
+              e.target.style.color = "white";
             }}
           >
             <Link
               to="/blogg"
               style={{
                 textDecoration: "none",
+                color: "white",
               }}
             >
               <h1>BLOG1</h1>

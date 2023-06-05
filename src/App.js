@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import Home from "./Components/Home";
 import About from "./Components/About";
 import Blog from "./Components/Blog";
+import logoo from "./Components/Logos/logoo.jpg";
 import {
   Nav,
   NavDropdown,
@@ -24,15 +25,17 @@ function App() {
             left: 0,
             right: 0,
             top: 0,
-            paddingTop: 20,
-            paddingBottom: 20,
+            paddingTop: 10,
+            paddingBottom: 10,
             fontWeight: "bold",
             fontSize: 18,
             zIndex: 1000,
           }}
         >
           <div className="container">
-            <Navbar.Brand href="#">Blog Logo</Navbar.Brand>
+            <Navbar.Brand href="#">
+              <img src={logoo} alt="logo" style={{ height: 90 }}></img>
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="navvbar-navv"></Navbar.Toggle>
             <Navbar.Collapse
               id="navvbar-navv"
