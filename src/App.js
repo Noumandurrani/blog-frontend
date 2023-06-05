@@ -11,6 +11,7 @@ import {
   Navbar,
   NavbarBrand,
 } from "react-bootstrap";
+import Contact from "./Components/Contact";
 function App() {
   return (
     <div className="">
@@ -69,6 +70,11 @@ function App() {
                     </Link>
                   </NavDropdown.Item>
                 </NavDropdown>
+                <NavItem>
+                  <Link to="/contact" className="nav-link">
+                    Contact
+                  </Link>
+                </NavItem>
               </Nav>
             </Navbar.Collapse>
           </div>
@@ -81,6 +87,7 @@ function App() {
           ></Route>
           <Route path="/about" element={<About></About>}></Route>
           <Route path="/blogg" element={<Blog></Blog>}></Route>
+          <Route path="/contact" element={<Contact></Contact>}></Route>
         </Routes>
         {/* ////////////////////////////////////////////////////// */}
       </Router>
