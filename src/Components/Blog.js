@@ -14,10 +14,20 @@ function Blog() {
       });
   }, []);
   return (
-    <div style={{ marginTop: 85 }}>
-      <h3 className="fs-1 fw-bolder text-center pt-5 pb-5 bg-info">
-        ------------The Blog----------
+    <div style={{ marginTop: 120 }}>
+      <h3
+        className=" text-center"
+        style={{
+          backgroundColor: "#dfbfb1",
+          fontSize: "70px",
+          height: 180,
+          paddingTop: "40px",
+          fontWeight: "bolder",
+        }}
+      >
+        The Blog
       </h3>
+      <hr></hr>
       <div className="container text-center">
         {/* //// */}
 

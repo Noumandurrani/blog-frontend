@@ -2,9 +2,21 @@ import React from "react";
 
 function About() {
   return (
-    <>
-      <div className="container" style={{ marginTop: 120 }}>
-        <h1 className="fw-bolder text-center">About</h1>
+    <div className="" style={{ marginTop: 120 }}>
+      <h3
+        className=" text-center"
+        style={{
+          backgroundColor: "#dfbfb1",
+          fontSize: "70px",
+          height: 180,
+          paddingTop: "40px",
+          fontWeight: "bolder",
+        }}
+      >
+        About Blog Site
+      </h3>
+      <hr></hr>
+      <div className="container" style={{}}>
         <p>
           Welcome to our blog, where we explore the limitless potential of
           positive thinking and its profound impact on our lives. In a world
@@ -53,7 +65,7 @@ function About() {
           positive environment
         </p>
       </div>
-    </>
+    </div>
   );
 }
 

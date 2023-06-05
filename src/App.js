@@ -12,6 +12,8 @@ import {
   NavbarBrand,
 } from "react-bootstrap";
 import Contact from "./Components/Contact";
+import Login from "./Components/Login";
+import SignUp from "./Components/SignUp";
 function App() {
   return (
     <div className="">
@@ -28,21 +30,24 @@ function App() {
             top: 0,
             paddingTop: 10,
             paddingBottom: 10,
-            fontWeight: "bold",
-            fontSize: 18,
+            // fontWeight: "",
+            // fontSize: 18,
             zIndex: 1000,
+            fontSize: "20px",
           }}
         >
           <div className="container">
             <Navbar.Brand href="#">
-              <img src={logoo} alt="logo" style={{ height: 90 }}></img>
+              <Link to="/">
+                <img src={logoo} alt="logo" style={{ height: 90 }}></img>
+              </Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navvbar-navv"></Navbar.Toggle>
             <Navbar.Collapse
               id="navvbar-navv"
               style={{ justifyContent: "end" }}
             >
-              <Nav>
+              <Nav className="">
                 <NavItem>
                   <Link to="/" className="nav-link">
                     Home
@@ -70,9 +75,27 @@ function App() {
                     </Link>
                   </NavDropdown.Item>
                 </NavDropdown>
-                <NavItem>
+                <NavItem style={{ marginRight: "200px" }}>
                   <Link to="/contact" className="nav-link">
                     Contact
+                  </Link>
+                </NavItem>
+                <NavItem className="">
+                  <Link
+                    to="/login"
+                    className="nav-link bg-warning border border-warning px-1 d-inline-block text-center"
+                    style={{ width: 100 }}
+                  >
+                    Login
+                  </Link>
+                </NavItem>
+                <NavItem className="">
+                  <Link
+                    to="/signup"
+                    className="nav-link border border-warning px-1 d-inline-block text-center"
+                    style={{ width: 100 }}
+                  >
+                    Sign up
                   </Link>
                 </NavItem>
               </Nav>
@@ -88,6 +111,8 @@ function App() {
           <Route path="/about" element={<About></About>}></Route>
           <Route path="/blogg" element={<Blog></Blog>}></Route>
           <Route path="/contact" element={<Contact></Contact>}></Route>
+          <Route path="/login" element={<Login></Login>}></Route>
+          <Route path="/signup" element={<SignUp></SignUp>}></Route>
         </Routes>
         {/* ////////////////////////////////////////////////////// */}
       </Router>

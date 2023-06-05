@@ -2,8 +2,8 @@ import React from "react";
 import Blog from "./Blog";
 import About from "./About";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import aaa from "./Logos/aaa.jpg";
-import bbb from "./Logos/bbb.jpg";
+import OIP from "./Logos/OIP.jpeg";
+import R from "./Logos/R.jpeg";
 import LatestPost from "./HomeComp/LatestPost";
 function Home(props) {
   return (
@@ -15,7 +15,7 @@ function Home(props) {
             className=""
             style={{
               height: 600,
-              backgroundImage: `url(${aaa})`,
+              backgroundImage: `url(${OIP})`,
               backgroundSize: "100% 100%",
               display: "flex",
               alignItems: "center",
@@ -30,7 +30,7 @@ function Home(props) {
               e.target.style.transform = "scale(1.1)";
               e.target.style.transformOrigin = "center";
               e.target.style.transition = "2s ease";
-              e.target.style.color = "red";
+              e.target.style.color = "#d8ba72";
             }}
             onMouseOut={(e) => {
               // e.target.style.backgroundSize = "100% 100%";
@@ -47,7 +47,14 @@ function Home(props) {
                 color: "white",
               }}
             >
-              <h1>BLOG1</h1>
+              <h1
+                style={{
+                  fontWeight: "bolder",
+                  fontSize: "70px",
+                }}
+              >
+                BLOG1
+              </h1>
             </Link>
             {/* <Routes>
             <Route path="/blogg" element={<Blog></Blog>}></Route>
@@ -61,7 +68,7 @@ function Home(props) {
             className=""
             style={{
               height: 600,
-              backgroundImage: `url(${bbb})`,
+              backgroundImage: `url(${R})`,
               backgroundSize: "100% 100%",
               display: "flex",
               alignItems: "center",
@@ -70,29 +77,40 @@ function Home(props) {
               transformOrigin: "center",
               overflow: "hidden",
               transition: "0s ease",
+              color: "white",
             }}
             onMouseOver={(e) => {
               // e.target.style.backgroundSize = "150%";
               e.target.style.transform = "scale(1.1)";
               e.target.style.transformOrigin = "center";
-              e.target.style.transition = "2s ease, backgroundSize 2s ease";
-              e.target.style.overflow = "hidden";
+              e.target.style.transition = "2s ease";
+              // e.target.style.overflow = "hidden";
+              e.target.style.color = "#d8ba72";
             }}
             onMouseOut={(e) => {
               // e.target.style.backgroundSize = "100% 100%";
               e.target.style.transform = "scale(1.0)";
               e.target.style.transformOrigin = "center";
-              e.target.style.transition = "2s ease, backgroundSize 2s ease";
+              e.target.style.transition = "2s ease";
+              e.target.style.color = "white";
             }}
           >
             <Link
               to="/blogg"
               style={{
                 textDecoration: "none",
+                color: "white",
               }}
               className=""
             >
-              <h1>BLOG2</h1>
+              <h1
+                style={{
+                  fontWeight: "bolder",
+                  fontSize: "70px",
+                }}
+              >
+                BLOG2
+              </h1>
             </Link>
           </div>
         </div>
