@@ -2,7 +2,7 @@ import React from "react";
 import Blog from "./Blog";
 import About from "./About";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import OIP from "./Logos/OIP.jpeg";
+import car from "./Logos/car.jpg";
 import R from "./Logos/R.jpeg";
 import LatestPost from "./HomeComp/LatestPost";
 function Home(props) {
@@ -15,7 +15,7 @@ function Home(props) {
             className=""
             style={{
               height: 600,
-              backgroundImage: `url(${OIP})`,
+              backgroundImage: `url(${car})`,
               backgroundSize: "100% 100%",
               display: "flex",
               alignItems: "center",
@@ -121,7 +121,7 @@ function Home(props) {
       <LatestPost></LatestPost>
       <Link to="/blogg">
         <button className="btn border border-dark px-5 pb-3 pt-3">
-          Read more
+          show more
         </button>
       </Link>
       <br></br>

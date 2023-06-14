@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import OIP from "./Logos/OIP.jpeg";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "react-fontawesome";
+import { Dropdown, Popover } from "react-bootstrap";
+import Popup from "./BlogComp/Popup";
 function Blog() {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -15,6 +18,7 @@ function Blog() {
         console.log(error);
       });
   }, []);
+  // const stringBody = data.body.length;
   return (
     <div style={{ marginTop: 120 }}>
       <h3
@@ -29,10 +33,10 @@ function Blog() {
       >
         The Blog
       </h3>
+      <br></br>
+      {/* <br></br> */}
       {/* <hr></hr> */}
-      <div className="container ">
-        {/* //// */}
-
+      <div className="container text-start">
         <div className="row">
           {data.map((item) => (
             <div className="col-lg-4">
@@ -42,16 +46,55 @@ function Blog() {
                 key={item.id}
               >
                 <img src={OIP}></img>
-                <div className="card-body">
-                  <h5 className="card-title p-3">{item.title}</h5>
-                  <p className="card-text">{item.body}</p>
+                <div
+                  className="card-header"
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <p className="">{item.author}</p>
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      variant="primary"
+                      className=" bg-light text-dark border-0 d-toggle-none"
+                      id="sharePost"
+                    >
+                      <i className="bi bi-three-dots-vertical"></i>
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu
+                      style={{
+                        boxShadow: "2px 2px 2px gray",
+                        placeItems: "end",
+                      }}
+                    >
+                      <Dropdown.Item className="d-flex flex-row justify-content-between">
+                        <i className="bi bi-share-fill"></i>
+                        <div
+                          className=""
+                          // style={{ marginLeft: "15px", marginTop: "2px" }}
+                        >
+                          Share Post
+                        </div>
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </div>
+                <div className="card-body overflow-none">
+                  <h5 className="card-title fw-bolder">{item.title}</h5>
+                  <p className="card-text">{item.body.substring(0, 25)} ....</p>
                   <Link
                     to={`/blogdetail/${item._id}`}
-                    className="d-flex justify-content-end"
+                    className="d-flex justify-content-end text-decoration-none"
                   >
                     <div className="btn btn-light border-dark">Read more</div>
                   </Link>
                 </div>
+                {/* <div className="card-footer"> */}
+                {/* <Link
+                  to={`/blogdetail/${item._id}`}
+                  className="d-flex justify-content-end text-decoration-none"
+                >
+                  <div className="btn btn-light border-dark">Read more</div>
+                </Link> */}
+                {/* </div> */}
                 {/* <hr></hr> */}
               </div>
             </div>
