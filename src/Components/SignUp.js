@@ -1,17 +1,35 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import axios from "axios";
+
+import { Link } from "react-router-dom";
 function SignUp() {
   const [userFirstName, setUserFirstName] = useState();
   const [userLastName, setUserLastName] = useState();
   const [userEmail, setUserEmail] = useState();
   const [userPassword, setUserPassword] = useState();
 
+  const handleRegSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post("http://127.0.0.1:4000/api/project/create-user", {
+        firstName: userFirstName,
+        lastName: userLastName,
+        email: userEmail,
+        password: userPassword,
+      })
+      .then((res) => {
+        console.log("reg:", res.data);
+        localStorage.setItem("token", res.data.token);
+        console.log(localStorage.getItem("token"));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div style={{ marginTop: 150 }}>
       <div className="container">
-        {/* <h2 className="text-center">SignUp</h2>
-        <hr></hr> */}
-
         <div
           className="row"
           style={{
@@ -78,12 +96,16 @@ function SignUp() {
               Create Account
             </h2>
             {/* <hr></hr> */}
-            <form className="mt-4 mb-4">
+            <form className="mt-4 mb-4" onSubmit={handleRegSubmit}>
               <div className=" mb-3">
                 <label className="fw-bold  mb-2">Firstname:</label>
                 <input
                   className="form-control border border-dark"
                   value={userFirstName}
+                  type="type"
+                  onChange={(e) => {
+                    setUserFirstName(e.target.value);
+                  }}
                 ></input>
               </div>
               <div className=" mb-3">
@@ -91,17 +113,33 @@ function SignUp() {
                 <input
                   className="form-control border border-dark"
                   value={userLastName}
+                  type="type"
+                  onChange={(e) => {
+                    setUserLastName(e.target.value);
+                  }}
                 ></input>
               </div>
               <div className=" mb-3">
                 <label className="fw-bold  mb-2" value={userEmail}>
                   Email:
                 </label>
-                <input className="form-control border border-dark"></input>
+                <input
+                  className="form-control border border-dark"
+                  type="email"
+                  onChange={(e) => {
+                    setUserEmail(e.target.value);
+                  }}
+                ></input>
               </div>
               <div className=" mb-3">
                 <label className="fw-bold  mb-2">Password:</label>
-                <input className="form-control border border-dark"></input>
+                <input
+                  className="form-control border border-dark"
+                  type="password"
+                  onChange={(e) => {
+                    setUserPassword(e.target.value);
+                  }}
+                ></input>
               </div>
               <button
                 className="btn btn-dark border border-dark px-5 pt-2 pb-2 mt-2"
