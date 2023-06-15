@@ -31,7 +31,12 @@ function LatestPost() {
               className="card mb-5 border-success"
               key={item.id}
             >
-              <img className="card-img-top" src={car} alt="image api" />
+              <img
+                className="card-img-top"
+                src={"http://127.0.0.1:4000/" + item.image}
+                alt="image api"
+                style={{ height: "280px" }}
+              />
               <div
                 className="card-header"
                 style={{ display: "flex", justifyContent: "space-between" }}
@@ -72,7 +77,7 @@ function LatestPost() {
                   to={`/blogdetail/${item._id}`}
                   className="d-flex justify-content-end text-decoration-none"
                 >
-                  <div className="btn btn-light border-dark">Read more</div>
+                  <div className="btn btn-light border-dark">See details</div>
                 </Link>
               </div>
               {/* <hr></hr> */}

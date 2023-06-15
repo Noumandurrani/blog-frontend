@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 function SignUp() {
+  const [userFirstName, setUserFirstName] = useState();
+  const [userLastName, setUserLastName] = useState();
+  const [userEmail, setUserEmail] = useState();
+  const [userPassword, setUserPassword] = useState();
+
   return (
     <div style={{ marginTop: 150 }}>
       <div className="container">
@@ -10,7 +15,7 @@ function SignUp() {
         <div
           className="row"
           style={{
-            height: "450px",
+            height: "",
             boxShadow:
               "5px 10px 10px rgb(178, 178, 178),-5px -5px 5px rgb(204, 204, 204)",
             borderRadius: "19px",
@@ -75,11 +80,23 @@ function SignUp() {
             {/* <hr></hr> */}
             <form className="mt-4 mb-4">
               <div className=" mb-3">
-                <label className="fw-bold  mb-2">Name:</label>
-                <input className="form-control border border-dark"></input>
+                <label className="fw-bold  mb-2">Firstname:</label>
+                <input
+                  className="form-control border border-dark"
+                  value={userFirstName}
+                ></input>
               </div>
               <div className=" mb-3">
-                <label className="fw-bold  mb-2">Email:</label>
+                <label className="fw-bold  mb-2">Lastname:</label>
+                <input
+                  className="form-control border border-dark"
+                  value={userLastName}
+                ></input>
+              </div>
+              <div className=" mb-3">
+                <label className="fw-bold  mb-2" value={userEmail}>
+                  Email:
+                </label>
                 <input className="form-control border border-dark"></input>
               </div>
               <div className=" mb-3">

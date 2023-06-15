@@ -32,26 +32,33 @@ function BlogDetails() {
       >
         The Blog Details
       </h3>
-      {id}
+      {/* {id} */}
       <h2></h2>
       {/* <hr></hr> */}
-      <div className="container text-center">
-        <div className="row">
-          <div className="col-lg-4">
+      <div className="container" style={{ textAlign: "justify" }}>
+        <div className="row justify-content-center">
+          <div className="col-lg-8 ">
             <div
               style={{ width: "" }}
-              className="card mb-5 border-success"
+              className=""
               //   key={idData.id}
             >
-              <img src={OIP}></img>
-              <div className="card-body">
-                <h5 className="card-title p-3">{idData.title}</h5>
-                <p className="card-text">{idData.body}</p>
+              <img
+                style={{ width: "100%" }}
+                src={"http://127.0.0.1:4000/" + idData.image}
+              ></img>
+              <br></br>
+              <br></br>
+
+              <div className="">
+                <h2 className="fw-bolder">{idData.title}</h2>
+                <p className="">{idData.body}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <br></br>
     </div>
   );
 }
