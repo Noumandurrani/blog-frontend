@@ -4,8 +4,14 @@ import axios from "axios";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
+import Post from "./UserDashComp/Post";
+import Profile from "./UserDashComp/Profile";
+// import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 
 function UserDash() {
+  const [onPage, setOnPage] = useState(true);
+  //   const [onPage, setOnPage] = useState(true);
+
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
@@ -25,8 +31,15 @@ function UserDash() {
     <>
       <div style={{ marginTop: 120 }}>
         <div className="container-fluid">
-          <div className="row">
-            <div className="col-lg-2 bg-primary" style={{ position: "fixed" }}>
+          <div className="row" style={{}}>
+            <div
+              className="col-lg-2 col-md-3, col-sm-5, col-5"
+              style={{
+                position: "fixed",
+                paddingTop: "10px",
+                backgroundColor: "black",
+              }}
+            >
               <h4>Dashboard</h4>
               <hr></hr>
               <div className="" style={{ height: "500px", width: "100%" }}>
@@ -52,6 +65,7 @@ function UserDash() {
 
                         // e.target.style.transition = "0.5s ease";
                       }}
+                      //   onClick={}
                     >
                       Profile
                     </h4>
@@ -63,6 +77,14 @@ function UserDash() {
                         lineHeight: "40px",
                         paddingLeft: "7px",
                         paddingRight: "7px",
+                      }}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (onPage == true) {
+                          <Post></Post>;
+                        } else {
+                          onPage = false;
+                        }
                       }}
                       onMouseOver={(e) => {
                         e.target.style.color = "pink";
@@ -83,8 +105,8 @@ function UserDash() {
               </div>
             </div>
             <div
-              className="col-lg-7 bg-warning"
-              style={{ position: "fixed", right: 312 }}
+              className="col-lg-7 col-md-7, col-sm-7, col-7 bg-warning"
+              style={{ position: "fixed", right: 312, paddingTop: "10px" }}
             >
               <div
                 className="container"
@@ -93,14 +115,20 @@ function UserDash() {
                 <Link to="/createpost">
                   <Button>new Post</Button>
                 </Link>
+                <br></br>
+                <br></br>
+
+                <Link to="/offcanvas">
+                  <Button>OffCanvas</Button>
+                </Link>
               </div>
             </div>
             <div
-              className="col-lg-3 bg-primary"
-              style={{ position: "absolute", right: 0 }}
+              className="col-lg-3 col-md-4, col-sm-5, col-5 bg-dark"
+              style={{ position: "absolute", right: 0, paddingTop: "10px" }}
             >
               <div
-                className="container-flluid"
+                className=""
                 style={{
                   height: "100%",
                   width: "100%",
@@ -111,7 +139,7 @@ function UserDash() {
                 </Link> */}
                 <div className="row">
                   {ltstPost.map((item) => (
-                    <div className="col-lg-12">
+                    <div className="col-lg-12 col-12 col-md-12 col-sm-12">
                       <div
                         style={{ width: "" }}
                         className="card mb-5 border-success"
@@ -171,19 +199,14 @@ function UserDash() {
                             </div>
                           </Link>
                         </div>
-                        {/* <div className="card-footer"> */}
-                        {/* <Link
-                  to={`/blogdetail/${item._id}`}
-                  className="d-flex justify-content-end text-decoration-none"
-                >
-                  <div className="btn btn-light border-dark">Read more</div>
-                </Link> */}
-                        {/* </div> */}
-                        {/* <hr></hr> */}
                       </div>
                     </div>
                   ))}
+                  <Button className="btn bg-dark">See more</Button>
                 </div>
+                <br></br>
+                <br></br>
+                <br></br>
               </div>
             </div>
           </div>

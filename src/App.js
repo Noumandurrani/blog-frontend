@@ -17,6 +17,9 @@ import SignUp from "./Components/SignUp";
 import BlogDetails from "./Components/BlogComp/BlogDetails";
 import CreatePost from "./Components/CreatePost";
 import UserDash from "./Components/UserDash";
+import OffCanvas from "./Components/UserDashComp/OffCanvas";
+import Post from "./Components/UserDashComp/Post";
+import Profile from "./Components/UserDashComp/Profile";
 function App() {
   return (
     <div className="">
@@ -24,9 +27,11 @@ function App() {
       {/* navbar */}
       <Router>
         <Navbar
+          // variant="tabs"
           bg="light"
           expand="lg md"
           style={{
+            // backgroundColor: "dark",
             position: "fixed",
             left: 0,
             right: 0,
@@ -118,6 +123,9 @@ function App() {
           <Route path="/signup" element={<SignUp></SignUp>}></Route>
           <Route path="/createpost" element={<CreatePost></CreatePost>}></Route>
           <Route path="/userdash" element={<UserDash></UserDash>}></Route>
+          <Route path="/offcanvas" element={<OffCanvas></OffCanvas>}></Route>
+          {/* <Route path="/post" element={<Post></Post>}></Route>
+          <Route path="/profile" element={<Profile></Profile>}></Route> */}
 
           <Route
             path="/blogdetail/:id"
