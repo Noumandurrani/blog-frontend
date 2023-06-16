@@ -16,6 +16,7 @@ import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import BlogDetails from "./Components/BlogComp/BlogDetails";
 import CreatePost from "./Components/CreatePost";
+import UserDash from "./Components/UserDash";
 function App() {
   return (
     <div className="">
@@ -116,6 +117,7 @@ function App() {
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/signup" element={<SignUp></SignUp>}></Route>
           <Route path="/createpost" element={<CreatePost></CreatePost>}></Route>
+          <Route path="/userdash" element={<UserDash></UserDash>}></Route>
 
           <Route
             path="/blogdetail/:id"

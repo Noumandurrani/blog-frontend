@@ -70,7 +70,7 @@ function LatestPost() {
               </div>
               <div className="card-body overflow-none">
                 <h5 className="card-title fw-bolder">{item.title}</h5>
-                <p className="card-text">{item.body.substring(0, 25)} ....</p>
+                <p className="card-text">{item.body.substring(0, 35)} ....</p>
               </div>
               <div className="card-footer">
                 <Link
