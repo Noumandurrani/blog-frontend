@@ -18,8 +18,9 @@ function UserDash() {
         console.log(error);
       });
   }, []);
-  const reversePost = data.reverse();
-  const updtPost = reversePost.slice(-1);
+  const slicePost = data.slice(-3);
+  const ltstPost = slicePost.reverse();
+
   return (
     <>
       <div style={{ marginTop: 120 }}>
@@ -28,16 +29,55 @@ function UserDash() {
             <div className="col-lg-2 bg-primary" style={{ position: "fixed" }}>
               <h4>Dashboard</h4>
               <hr></hr>
-              <div
-                className="container"
-                style={{ height: "500px", width: "100%" }}
-              >
+              <div className="" style={{ height: "500px", width: "100%" }}>
                 <div>
                   <div className="">
-                    <h4>Profile</h4>
-                    <hr></hr>
-                    <h4>Posts</h4>
-                    <hr></hr>
+                    <h4
+                      style={{
+                        transition: "0.3s ease",
+                        backgroundColor: "red",
+                        lineHeight: "40px",
+                        paddingLeft: "7px",
+                        paddingRight: "7px",
+                      }}
+                      onMouseOver={(e) => {
+                        e.target.style.color = "pink";
+                        e.target.style.backgroundColor = "white";
+
+                        // e.target.style.transition = "0.5s ease";
+                      }}
+                      onMouseOut={(e) => {
+                        e.target.style.color = "black";
+                        e.target.style.backgroundColor = "red";
+
+                        // e.target.style.transition = "0.5s ease";
+                      }}
+                    >
+                      Profile
+                    </h4>
+                    {/* <hr></hr> */}
+                    <h4
+                      style={{
+                        transition: "0.3s ease",
+                        backgroundColor: "red",
+                        lineHeight: "40px",
+                        paddingLeft: "7px",
+                        paddingRight: "7px",
+                      }}
+                      onMouseOver={(e) => {
+                        e.target.style.color = "pink";
+                        e.target.style.backgroundColor = "white";
+                        // e.target.style.transition = "0.5s ease";
+                      }}
+                      onMouseOut={(e) => {
+                        e.target.style.color = "black";
+                        e.target.style.backgroundColor = "red";
+                        // e.target.style.transition = "0.5s ease";
+                      }}
+                    >
+                      Posts
+                    </h4>
+                    {/* <hr></hr> */}
                   </div>
                 </div>
               </div>
@@ -70,7 +110,7 @@ function UserDash() {
                   <div style={{ color: "white" }}>My LatestPosts</div>
                 </Link> */}
                 <div className="row">
-                  {updtPost.map((item) => (
+                  {ltstPost.map((item) => (
                     <div className="col-lg-12">
                       <div
                         style={{ width: "" }}
