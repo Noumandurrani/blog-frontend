@@ -20,6 +20,14 @@ import { Routes, Route, Link } from "react-router-dom";
 import CardHeader from "react-bootstrap/esm/CardHeader";
 
 function OffCanvas() {
+  const [h, setH] = useState("tab1");
+  const hndlTab = (e) => {
+    if (e == h) {
+      return null;
+    } else {
+      setH(e);
+    }
+  };
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
@@ -57,9 +65,12 @@ function OffCanvas() {
             </OffcanvasHeader>
             <OffcanvasBody>
               <Nav>
-                <Link to="/profile" className="nav-link">
+                <Nav.Link href="#" onClick={hndlTab("tab1")}>
                   Profile
-                </Link>
+                </Nav.Link>
+                {/* <Link to="/profile" className="nav-link">
+                  Profile
+                </Link> */}
                 <Link to="/post" className="nav-link">
                   Post
                 </Link>
@@ -75,6 +86,8 @@ function OffCanvas() {
         <div className="row">
           <div className="col-lg-8 bg-warning" style={{ paddingTop: "10px" }}>
             <h2>Posts # profile</h2>
+            <div></div>
+            <Profile></Profile>
           </div>
           <div
             className="col-lg-4 bg-black text-light"
@@ -83,9 +96,12 @@ function OffCanvas() {
             <h2 className="text-light">Latest Posts</h2>
             <div className="row">
               {ltstPost.map((item) => (
-                <div className="col-lg-12 col-12 col-md-12 col-sm-12">
+                <div
+                  className="col-lg-12 col-12 col-md-12 col-sm-12"
+                  style={{}}
+                >
                   <div
-                    style={{ width: "" }}
+                    style={{ width: "", boxShadow: "5px 5px 5px gray" }}
                     className="card mb-5 border-success"
                     key={item.id}
                   >
@@ -104,13 +120,16 @@ function OffCanvas() {
                     >
                       <p className="">{item.author}</p>
                       <Dropdown>
-                        <Dropdown.Toggle
-                          variant="primary"
-                          className=" bg-light text-dark border-0 d-toggle-none"
+                        {/* <i
+                          className="bi bi-three-dots-vertical"
                           id="sharePost"
-                        >
-                          <i className="bi bi-three-dots-vertical"></i>
-                        </Dropdown.Toggle>
+                        ></i> */}
+                        <Dropdown.Toggle
+                          //   variant="primary"
+                          className="bi bi-three-dots-vertical bg-light text-dark border-0 "
+                          id="sharePost"
+                          //   style={{ display: "none" }}
+                        ></Dropdown.Toggle>
                         <Dropdown.Menu
                           style={{
                             boxShadow: "2px 2px 2px gray",

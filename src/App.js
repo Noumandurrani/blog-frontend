@@ -4,6 +4,7 @@ import Home from "./Components/Home";
 import About from "./Components/About";
 import Blog from "./Components/Blog";
 import logoo from "./Components/Logos/logoo.jpg";
+import logo1 from "./Components/Logos/logo1.JPG";
 import {
   Nav,
   NavDropdown,
@@ -20,6 +21,7 @@ import UserDash from "./Components/UserDash";
 import OffCanvas from "./Components/UserDashComp/OffCanvas";
 import Post from "./Components/UserDashComp/Post";
 import Profile from "./Components/UserDashComp/Profile";
+import { useState } from "react";
 function App() {
   return (
     <div className="">

@@ -25,9 +25,14 @@ function LatestPost() {
     <div className="container text-start">
       <div className="row">
         {rvrsArr.map((item) => (
-          <div className="col-lg-4">
+          <div
+            className="col-lg-4"
+            // onMouseOver={(e) => {
+            //   e.target.style.boxShadow = "10px 10px 10px gray";
+            // }}
+          >
             <div
-              style={{ width: "" }}
+              style={{ width: "", boxShadow: "5px 5px 5px gray" }}
               className="card mb-5 border-success"
               key={item.id}
             >
