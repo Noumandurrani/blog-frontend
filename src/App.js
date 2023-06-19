@@ -16,13 +16,17 @@ import Contact from "./Components/Contact";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import BlogDetails from "./Components/BlogComp/BlogDetails";
-import CreatePost from "./Components/CreatePost";
+import CreatePost from "./Components/UserDashComp/CreatePost";
 import UserDash from "./Components/UserDash";
-import OffCanvas from "./Components/UserDashComp/OffCanvas";
-import Post from "./Components/UserDashComp/Post";
-import Profile from "./Components/UserDashComp/Profile";
+import OffCanvas from "./Components/OffCanvas";
+// import Post from "./Components/UserDashComp/Post";
+// import Profile from "./Components/UserDashComp/Profile";
 import { useState } from "react";
 function App() {
+  // const [isLoggedIn, setIsLoggedIn] = useState(false)
+  // const handleIsLogin = ()=>{
+  //   setIsLoggedIn(true)
+  // }
   return (
     <div className="">
       {/* <h1>-------------Blogging Site---------------</h1> */}
@@ -123,11 +127,13 @@ function App() {
           <Route path="/contact" element={<Contact></Contact>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/signup" element={<SignUp></SignUp>}></Route>
-          <Route path="/createpost" element={<CreatePost></CreatePost>}></Route>
           <Route path="/userdash" element={<UserDash></UserDash>}></Route>
-          <Route path="/offcanvas" element={<OffCanvas></OffCanvas>}></Route>
+          <Route path="/offcanvas" element={localStorage.getItem("isloggedIn")?<OffCanvas></OffCanvas>:<Login></Login>}>
+          </Route>
+          <Route path="/offcanvas/createpost" element={localStorage.getItem("isloggedIn")?<CreatePost></CreatePost>:<Login></Login>}></Route>
           {/* <Route path="/post" element={<Post></Post>}></Route>
           <Route path="/profile" element={<Profile></Profile>}></Route> */}
+
 
           <Route
             path="/blogdetail/:id"

@@ -127,19 +127,19 @@ function Home(props) {
       <br></br>
       <br></br>
       <br></br>
-      <Link to="/createpost">
+      {/* <Link to="/createpost">
         <button className="btn btn-dark border border-dark px-5 pb-3 pt-3">
           Create Post
         </button>
-      </Link>
+      </Link> */}
       <br></br>
       <br></br>
       <br></br>
-      <Link to="/userdash">
+      {/* <Link to="/userdash">
         <button className="btn btn-dark border border-dark px-5 pb-3 pt-3">
           User DashBoard
         </button>
-      </Link>
+      </Link> */}
       <br></br>
       <br></br>
       <br></br>

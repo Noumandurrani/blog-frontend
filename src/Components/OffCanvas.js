@@ -1,6 +1,6 @@
 import React from "react";
-import Profile from "./Profile";
-import Post from "./Post";
+import Profile from "./UserDashComp/Profile";
+import Post from "./UserDashComp/Post";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Dropdown, Button } from "react-bootstrap";
@@ -16,18 +16,24 @@ import {
   CardImg,
 } from "react-bootstrap";
 // import { Offcanvas } from "react-bootstrap/Offcanvas";
-import { Routes, Route, Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import CardHeader from "react-bootstrap/esm/CardHeader";
+import { useNavigate } from "react-router-dom";
 
 function OffCanvas() {
-  const [h, setH] = useState("tab1");
-  const hndlTab = (e) => {
-    if (e == h) {
-      return null;
-    } else {
-      setH(e);
-    }
-  };
+  const navgate = useNavigate()
+  const handleLogout = (e)=>{
+    localStorage.clear()
+    navgate('/')
+  }
+  const [profilee, setProfilee] = useState(true);
+  const [poste, setPoste] = useState(false);
+  //////////////user data api
+  // const [userData, setUserData] = useState({})
+  // useEffect(()=>{
+  //   axios.get("")
+  // })
+  /////////////post data api
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
@@ -65,18 +71,29 @@ function OffCanvas() {
             </OffcanvasHeader>
             <OffcanvasBody>
               <Nav>
-                <Nav.Link href="#" onClick={hndlTab("tab1")}>
+                <Nav.Link href="#" onClick={()=>{
+                  setProfilee(true);
+                  setPoste(false)
+                }}>
                   Profile
+                </Nav.Link>
+                <Nav.Link href="#" onClick={()=>{
+                  setProfilee(false);
+                  setPoste(true)
+                }}>
+                  Post
                 </Nav.Link>
                 {/* <Link to="/profile" className="nav-link">
                   Profile
                 </Link> */}
-                <Link to="/post" className="nav-link">
+                {/* <Link to="/post" className="nav-link">
                   Post
-                </Link>
+                </Link> */}
               </Nav>
             </OffcanvasBody>
           </Navbar.Offcanvas>
+          <Button onClick={handleLogout}>Logout</Button>
+
         </Container>
       </Navbar>
       <div
@@ -84,14 +101,15 @@ function OffCanvas() {
         style={{ marginTop: "0px", paddingTop: "45px" }}
       >
         <div className="row">
-          <div className="col-lg-8 bg-warning" style={{ paddingTop: "10px" }}>
+          <div className="col-lg-8 bg-warning" style={{ paddingTop: "10px", position:"fixed" }}>
             <h2>Posts # profile</h2>
-            <div></div>
-            <Profile></Profile>
+            {/* <div></div> */}
+            {profilee && <Profile></Profile>}
+            {poste && <Post></Post>}
           </div>
           <div
             className="col-lg-4 bg-black text-light"
-            style={{ paddingTop: "10px" }}
+            style={{ paddingTop: "10px", position: "absolute", right: 0}}
           >
             <h2 className="text-light">Latest Posts</h2>
             <div className="row">

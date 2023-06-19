@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 function SignUp() {
+  const navgate = useNavigate()
+
   const [userFirstName, setUserFirstName] = useState();
   const [userLastName, setUserLastName] = useState();
   const [userEmail, setUserEmail] = useState();
   const [userPassword, setUserPassword] = useState();
 
   const handleRegSubmit = (event) => {
+
     event.preventDefault();
     axios
       .post("http://127.0.0.1:4000/api/project/create-user", {
@@ -20,7 +24,10 @@ function SignUp() {
       .then((res) => {
         console.log("reg:", res.data);
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("isLoggedIn", true)
         console.log(localStorage.getItem("token"));
+        navgate("/OffCanvas")
+
       })
       .catch((err) => {
         console.log(err);
