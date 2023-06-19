@@ -1,9 +1,32 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import OIP from "./Logos/OIP.jpeg";
+import React, { useState } from "react";
+import { Link} from "react-router-dom";
+// import OIP from "./Logos/OIP.jpeg";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  return (
+  const navgate = useNavigate()
+  //call login api 
+  const [loginEmail, setLoginEmail] = useState()
+  const [loginPass, setLoginPass] = useState()
+
+  const handleLogin = (event)=>{
+    event.preventDefault();
+    axios.post("http://127.0.0.1:4000/api/project/user/login",{email:loginEmail, password
+    : loginPass}).then((res)=>{
+      console.log("login response", res.data)
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("isloggedIn", true)
+      console.log(localStorage.getItem("token"));
+      console.log(localStorage.getItem("isloggedIn"));
+
+      navgate("/OffCanvas")
+    }).catch((err)=>{
+      console.log("error loggin", err);
+    });
+  };
+
+    return (
     <div style={{ marginTop: 150 }}>
       {/* <h3
         className=" text-center"
@@ -52,19 +75,19 @@ function Login() {
               Login
             </h2>
             {/* <hr></hr> */}
-            <form className="mt-4 mb-4">
-              <div className=" mb-3">
-                <label className="fw-bold  mb-2">Name:</label>
-                <input className="form-control border border-dark"></input>
-              </div>
+            <form className="mt-4 mb-4" onSubmit={handleLogin}>
               <div className=" mb-3">
                 <label className="fw-bold  mb-2">Email:</label>
-                <input className="form-control border border-dark"></input>
+                <input className="form-control border border-dark" value={loginEmail} type="email" onChange={(e)=>{setLoginEmail(e.target.value)}}></input>
               </div>
               <div className=" mb-3">
-                <a href="#" style={{ textDecoration: "none" }}>
+                <label className="fw-bold  mb-2">Password:</label>
+                <input className="form-control border border-dark" value={loginPass} type="password" onChange={(e)=>{setLoginPass(e.target.value)}}></input>
+              </div>
+              <div className=" mb-3">
+                <div  style={{ textDecoration: "none" }}>
                   Forgot your password?
-                </a>
+                </div>
               </div>
               <button
                 className="btn btn-dark border border-dark px-5 pt-2 pb-2 mt-2"
