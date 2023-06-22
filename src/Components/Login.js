@@ -9,16 +9,21 @@ function Login() {
   //call login api 
   const [loginEmail, setLoginEmail] = useState()
   const [loginPass, setLoginPass] = useState()
+  // const [userId, setUserId] = useState()
+
 
   const handleLogin = (event)=>{
     event.preventDefault();
     axios.post("http://127.0.0.1:4000/api/project/user/login",{email:loginEmail, password
     : loginPass}).then((res)=>{
       console.log("login response", res.data)
+      console.log("user_id : ", res.data.data._id)
+      localStorage.setItem("userId", res.data.data._id)
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("isloggedIn", true)
       console.log(localStorage.getItem("token"));
       console.log(localStorage.getItem("isloggedIn"));
+      // setUserId(res.data._id)
 
       navgate("/OffCanvas")
     }).catch((err)=>{

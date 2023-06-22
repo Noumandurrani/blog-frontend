@@ -16,16 +16,16 @@ import {
   CardImg,
 } from "react-bootstrap";
 // import { Offcanvas } from "react-bootstrap/Offcanvas";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import { useNavigate } from "react-router-dom";
 
 function OffCanvas() {
-  const navgate = useNavigate()
-  const handleLogout = (e)=>{
-    localStorage.clear()
-    navgate('/')
-  }
+  const navgate = useNavigate();
+  const handleLogout = (e) => {
+    localStorage.clear();
+    navgate("/");
+  };
   const [profilee, setProfilee] = useState(true);
   const [poste, setPoste] = useState(false);
   //////////////user data api
@@ -71,16 +71,22 @@ function OffCanvas() {
             </OffcanvasHeader>
             <OffcanvasBody>
               <Nav>
-                <Nav.Link href="#" onClick={()=>{
-                  setProfilee(true);
-                  setPoste(false)
-                }}>
+                <Nav.Link
+                  href="#"
+                  onClick={() => {
+                    setProfilee(true);
+                    setPoste(false);
+                  }}
+                >
                   Profile
                 </Nav.Link>
-                <Nav.Link href="#" onClick={()=>{
-                  setProfilee(false);
-                  setPoste(true)
-                }}>
+                <Nav.Link
+                  href="#"
+                  onClick={() => {
+                    setProfilee(false);
+                    setPoste(true);
+                  }}
+                >
                   Post
                 </Nav.Link>
                 {/* <Link to="/profile" className="nav-link">
@@ -93,7 +99,6 @@ function OffCanvas() {
             </OffcanvasBody>
           </Navbar.Offcanvas>
           <Button onClick={handleLogout}>Logout</Button>
-
         </Container>
       </Navbar>
       <div
@@ -101,7 +106,10 @@ function OffCanvas() {
         style={{ marginTop: "0px", paddingTop: "45px" }}
       >
         <div className="row">
-          <div className="col-lg-8 bg-warning" style={{ paddingTop: "10px", position:"fixed" }}>
+          <div
+            className="col-lg-8 bg-warning"
+            style={{ paddingTop: "10px", position: "fixed" }}
+          >
             <h2>Posts # profile</h2>
             {/* <div></div> */}
             {profilee && <Profile></Profile>}
@@ -109,7 +117,7 @@ function OffCanvas() {
           </div>
           <div
             className="col-lg-4 bg-black text-light"
-            style={{ paddingTop: "10px", position: "absolute", right: 0}}
+            style={{ paddingTop: "10px", position: "absolute", right: 0 }}
           >
             <h2 className="text-light">Latest Posts</h2>
             <div className="row">
