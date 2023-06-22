@@ -19,6 +19,7 @@ import {
 import { Link } from "react-router-dom";
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import { useNavigate } from "react-router-dom";
+import { userInjured } from "fontawesome";
 
 function OffCanvas() {
   const navgate = useNavigate();
@@ -28,6 +29,8 @@ function OffCanvas() {
   };
   const [profilee, setProfilee] = useState(true);
   const [poste, setPoste] = useState(false);
+  const userId = localStorage.getItem("userId");
+  // const [userid, setUserId] = useState(userId);
   //////////////user data api
   // const [userData, setUserData] = useState({})
   // useEffect(()=>{
@@ -37,17 +40,17 @@ function OffCanvas() {
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:4000/api/project/post-all")
+      .post("http://127.0.0.1:4000/api/project/user/posts", { user_id: userId })
       .then((response) => {
-        console.log(response);
+        console.log(response.data.data);
         setData(response.data.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-  const slicePost = data.slice(-3);
-  const ltstPost = slicePost.reverse();
+  // const slicePost = data.slice(-3);
+  const ltstPost = data.reverse();
   return (
     <div style={{ marginTop: 120 }}>
       {/* <div>OffCanvas</div> */}

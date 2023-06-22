@@ -10,6 +10,7 @@ function CreatePost() {
   const [author, setAuthor] = useState();
   const [image, setImage] = useState();
   const [category, setCategory] = useState();
+  const userId = localStorage.getItem("userId");
   //   const [postData, setPostData] = useState({
   //     title: "",
   //     body: "",
@@ -34,6 +35,7 @@ function CreatePost() {
     formData.append("author", author);
     formData.append("image", image);
     formData.append("category", category);
+    formData.append("user_id", userId);
 
     const config = {
       headers: { "content-type": "multipart/form-data" },
