@@ -33,7 +33,6 @@ function App() {
       {/* navbar */}
       <Router>
         <Navbar
-          // variant="tabs"
           bg="light"
           expand="lg md"
           style={{
@@ -61,7 +60,7 @@ function App() {
               id="navvbar-navv"
               style={{ justifyContent: "end" }}
             >
-              <Nav className="">
+              <Nav className="" variant="underline">
                 <NavItem>
                   <Link to="/" className="nav-link">
                     Home
@@ -128,19 +127,34 @@ function App() {
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/signup" element={<SignUp></SignUp>}></Route>
           <Route path="/userdash" element={<UserDash></UserDash>}></Route>
-          <Route path="/offcanvas" element={localStorage.getItem("isloggedIn")?<OffCanvas></OffCanvas>:<Login></Login>}>
-          </Route>
-          <Route path="/offcanvas/createpost" element={localStorage.getItem("isloggedIn")?<CreatePost></CreatePost>:<Login></Login>}></Route>
+          <Route
+            path="/offcanvas"
+            element={
+              localStorage.getItem("isloggedIn") ? (
+                <OffCanvas></OffCanvas>
+              ) : (
+                <Login></Login>
+              )
+            }
+          ></Route>
+          <Route
+            path="/offcanvas/createpost"
+            element={
+              localStorage.getItem("isloggedIn") ? (
+                <CreatePost></CreatePost>
+              ) : (
+                <Login></Login>
+              )
+            }
+          ></Route>
           {/* <Route path="/post" element={<Post></Post>}></Route>
           <Route path="/profile" element={<Profile></Profile>}></Route> */}
-
 
           <Route
             path="/blogdetail/:id"
             element={<BlogDetails></BlogDetails>}
           ></Route>
         </Routes>
-        {/* ////////////////////////////////////////////////////// */}
       </Router>
       {/* navbar */}
 

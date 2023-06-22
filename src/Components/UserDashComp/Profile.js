@@ -46,28 +46,51 @@ function Profile() {
   };
   //
   return (
-    <div style={{}}>
+    <div
+      style={{
+        display: "flex",
+        // justifyContent: "center",
+        alignItems: "center",
+      }}
+      className="flex-column "
+    >
       <h2>Profile</h2>
-      {/* <h2>{localStorage.getItem("userId")}</h2> */}
-      {/* <h4>{userData.email}</h4> */}
-      {/* <h5>{userId}</h5> */}
       <img
         src={"http://127.0.0.1:4000/" + userData.profile} //"http://127.0.0.1:4000/" + userData.profile
         alt="dp"
-        style={{ height: "150px", borderRadius: "100px", width: "150px" }}
+        style={{
+          height: "180px",
+          borderRadius: "100px",
+          width: "180px",
+          marginBottom: "20px",
+          // boxShadow: "5px 5px 5px black",
+        }}
+        className="border border-dark border-4"
       ></img>
-      <form onSubmit={handleSetProfile}>
+      <form
+        onSubmit={handleSetProfile}
+        style={{}}
+        className="col-lg-6 d-flex flex-row mb-3"
+      >
         <input
           type="file"
           name="profile"
           onChange={(e) => {
             setProfile(e.target.files[0]);
           }}
+          style={{
+            boxShadow: "2px 2px 5px black",
+          }}
+          className="border border-dark rounded bg-dark text-light form-control"
         ></input>
         <input
-          className="btn btn-light border-dark"
+          className="btn btn-light border-dark mx-2 "
+          // style={{ height: "33px" }}
           value="Save"
           type="submit"
+          style={{
+            boxShadow: "2px 2px 5px black",
+          }}
         ></input>
       </form>
 

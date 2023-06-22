@@ -36,7 +36,7 @@ function OffCanvas() {
   // useEffect(()=>{
   //   axios.get("")
   // })
-  /////////////post data api
+  /////////////get data api by user id
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
@@ -49,22 +49,28 @@ function OffCanvas() {
         console.log(error);
       });
   }, []);
-  // const slicePost = data.slice(-3);
-  const ltstPost = data.reverse();
+  const slicePost = data.slice(-2);
+  const ltstPost = slicePost.reverse();
   return (
-    <div style={{ marginTop: 120 }}>
+    <div style={{ marginTop: 120, overflow: "hidden" }}>
       {/* <div>OffCanvas</div> */}
       <Navbar
-        expand=""
-        bg="black"
+        expand="lg"
+        bg="warning"
         className="justify-content-center"
-        style={{ position: "fixed", right: 0, left: 0 }}
+        style={{
+          position: "fixed",
+          right: 0,
+          left: 0,
+          zIndex: 1000,
+          boxShadow: "3px 3px 3px black",
+        }}
       >
-        <Container fluid className="justify-content-start">
-          <Navbar.Brand href="#"></Navbar.Brand>
+        <Container fluid className="justify-content-space">
+          {/* <Navbar.Brand href="#"></Navbar.Brand> */}
           <Navbar.Toggle
             aria-controls="off-convass"
-            className="text-dark bg-warning"
+            className="text-light bg-dark p-2 px-3"
           >
             Menu
           </Navbar.Toggle>
@@ -73,13 +79,14 @@ function OffCanvas() {
               <OffcanvasTitle>User Dashboard</OffcanvasTitle>
             </OffcanvasHeader>
             <OffcanvasBody>
-              <Nav>
+              <Nav variant="underline">
                 <Nav.Link
                   href="#"
                   onClick={() => {
                     setProfilee(true);
                     setPoste(false);
                   }}
+                  className="fw-bold"
                 >
                   Profile
                 </Nav.Link>
@@ -89,6 +96,7 @@ function OffCanvas() {
                     setProfilee(false);
                     setPoste(true);
                   }}
+                  className="fw-bold"
                 >
                   Post
                 </Nav.Link>
@@ -101,28 +109,58 @@ function OffCanvas() {
               </Nav>
             </OffcanvasBody>
           </Navbar.Offcanvas>
-          <Button onClick={handleLogout}>Logout</Button>
+          <Button onClick={handleLogout} className="btn btn-danger">
+            Logout
+          </Button>
         </Container>
       </Navbar>
       <div
         className="container-fluid bg-primary"
-        style={{ marginTop: "0px", paddingTop: "45px" }}
+        style={{ marginTop: "9px", paddingTop: "45px" }}
       >
         <div className="row">
           <div
-            className="col-lg-8 bg-warning"
-            style={{ paddingTop: "10px", position: "fixed" }}
+            className="col-lg-8 col-md-8 col-sm-7 col-8"
+            style={{
+              paddingTop: "15px",
+              position: "fixed",
+              backgroundColor: "#a49f2f",
+              height: "100%",
+              textAlign: "center",
+            }}
           >
-            <h2>Posts # profile</h2>
-            {/* <div></div> */}
             {profilee && <Profile></Profile>}
             {poste && <Post></Post>}
           </div>
           <div
-            className="col-lg-4 bg-black text-light"
-            style={{ paddingTop: "10px", position: "absolute", right: 0 }}
+            className="col-lg-4 col-md-4 col-sm-5 col-8 text-light"
+            style={{
+              paddingTop: "10px",
+              position: "absolute",
+              right: 0,
+              backgroundColor: "#d3d08b",
+              border: "red",
+              boxShadow: "0px 2px 10px black",
+            }}
           >
-            <h2 className="text-light">Latest Posts</h2>
+            <h2
+              className="text-dark py-2 position-fixed"
+              style={{
+                marginLeft: "-12px",
+                marginRight: "-12px",
+                marginTop: "-7px",
+                paddingLeft: "12px",
+                backgroundColor: "#d3d08b",
+                right: "13px",
+                zIndex: 200,
+
+                boxShadow: "0px 3px 3px black",
+
+                // paddingRight: "12px",
+              }}
+            >
+              Latest Posts
+            </h2>
             <div className="row">
               {ltstPost.map((item) => (
                 <div
@@ -130,7 +168,11 @@ function OffCanvas() {
                   style={{}}
                 >
                   <div
-                    style={{ width: "", boxShadow: "5px 5px 5px gray" }}
+                    style={{
+                      width: "",
+                      boxShadow: "5px 5px 5px gray, -3px -3px 3px gray",
+                      marginTop: "70px",
+                    }}
                     className="card mb-5 border-success"
                     key={item.id}
                   >
@@ -195,12 +237,23 @@ function OffCanvas() {
                 </div>
               ))}
             </div>
-            <Button
-              className="btn bg-warning fw-bold fs-5 text-black"
-              style={{ width: "100%", padding: "10px" }}
-            >
-              See more
-            </Button>
+            <div>
+              {data == "" ? (
+                <h4 className="text-danger">No Posts</h4>
+              ) : (
+                <Button
+                  className="btn bg-light fw-bold fs-5 text-black"
+                  style={{
+                    width: "100%",
+                    padding: "10px",
+                    boxShadow: "5px 5px 5px gray, -3px -3px 3px gray",
+                  }}
+                >
+                  See more
+                </Button>
+              )}
+            </div>
+
             <br></br>
             <br></br>
             <br></br>

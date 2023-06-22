@@ -1,37 +1,40 @@
 import React, { useState } from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 // import OIP from "./Logos/OIP.jpeg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const navgate = useNavigate()
-  //call login api 
-  const [loginEmail, setLoginEmail] = useState()
-  const [loginPass, setLoginPass] = useState()
+  const navgate = useNavigate();
+  //call login api
+  const [loginEmail, setLoginEmail] = useState();
+  const [loginPass, setLoginPass] = useState();
   // const [userId, setUserId] = useState()
 
-
-  const handleLogin = (event)=>{
+  const handleLogin = (event) => {
     event.preventDefault();
-    axios.post("http://127.0.0.1:4000/api/project/user/login",{email:loginEmail, password
-    : loginPass}).then((res)=>{
-      console.log("login response", res.data)
-      console.log("user_id : ", res.data.data._id)
-      localStorage.setItem("userId", res.data.data._id)
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("isloggedIn", true)
-      console.log(localStorage.getItem("token"));
-      console.log(localStorage.getItem("isloggedIn"));
-      // setUserId(res.data._id)
-
-      navgate("/OffCanvas")
-    }).catch((err)=>{
-      console.log("error loggin", err);
-    });
+    axios
+      .post("http://127.0.0.1:4000/api/project/user/login", {
+        email: loginEmail,
+        password: loginPass,
+      })
+      .then((res) => {
+        console.log("login response", res.data);
+        console.log("user_id : ", res.data.data._id);
+        localStorage.setItem("userId", res.data.data._id);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("isloggedIn", true);
+        console.log(localStorage.getItem("token"));
+        console.log(localStorage.getItem("isloggedIn"));
+        // setUserId(res.data._id)
+        navgate("/OffCanvas");
+      })
+      .catch((err) => {
+        console.log("error loggin", err);
+      });
   };
 
-    return (
+  return (
     <div style={{ marginTop: 150 }}>
       {/* <h3
         className=" text-center"
@@ -83,14 +86,28 @@ function Login() {
             <form className="mt-4 mb-4" onSubmit={handleLogin}>
               <div className=" mb-3">
                 <label className="fw-bold  mb-2">Email:</label>
-                <input className="form-control border border-dark" value={loginEmail} type="email" onChange={(e)=>{setLoginEmail(e.target.value)}}></input>
+                <input
+                  className="form-control border border-dark"
+                  value={loginEmail}
+                  type="email"
+                  onChange={(e) => {
+                    setLoginEmail(e.target.value);
+                  }}
+                ></input>
               </div>
               <div className=" mb-3">
                 <label className="fw-bold  mb-2">Password:</label>
-                <input className="form-control border border-dark" value={loginPass} type="password" onChange={(e)=>{setLoginPass(e.target.value)}}></input>
+                <input
+                  className="form-control border border-dark"
+                  value={loginPass}
+                  type="password"
+                  onChange={(e) => {
+                    setLoginPass(e.target.value);
+                  }}
+                ></input>
               </div>
               <div className=" mb-3">
-                <div  style={{ textDecoration: "none" }}>
+                <div style={{ textDecoration: "none" }}>
                   Forgot your password?
                 </div>
               </div>
