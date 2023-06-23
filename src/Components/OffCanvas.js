@@ -25,6 +25,7 @@ function OffCanvas() {
   const navgate = useNavigate();
   const handleLogout = (e) => {
     localStorage.clear();
+    localStorage.setItem("isloggedIn", false);
     navgate("/");
   };
   const [profilee, setProfilee] = useState(true);
@@ -123,7 +124,7 @@ function OffCanvas() {
             className="col-lg-8 col-md-8 col-sm-7 col-8"
             style={{
               paddingTop: "15px",
-              position: "fixed",
+              // position: "relative",
               backgroundColor: "#a49f2f",
               height: "100%",
               textAlign: "center",
@@ -148,10 +149,11 @@ function OffCanvas() {
               style={{
                 marginLeft: "-12px",
                 marginRight: "-12px",
-                marginTop: "-7px",
+                marginTop: "-2px",
                 paddingLeft: "12px",
+                paddingRight: "6px",
                 backgroundColor: "#d3d08b",
-                right: "13px",
+                right: "14px",
                 zIndex: 200,
 
                 boxShadow: "0px 3px 3px black",

@@ -22,6 +22,7 @@ import OffCanvas from "./Components/OffCanvas";
 // import Post from "./Components/UserDashComp/Post";
 // import Profile from "./Components/UserDashComp/Profile";
 import { useState } from "react";
+import NavvBar from "./NavvBar";
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
   // const handleIsLogin = ()=>{
@@ -32,7 +33,8 @@ function App() {
       {/* <h1>-------------Blogging Site---------------</h1> */}
       {/* navbar */}
       <Router>
-        <Navbar
+        <NavvBar></NavvBar>
+        {/* <Navbar
           bg="light"
           expand="lg md"
           style={{
@@ -114,7 +116,7 @@ function App() {
               </Nav>
             </Navbar.Collapse>
           </div>
-        </Navbar>
+        </Navbar> */}
         {/* ///////////////////////////////////////////////////// */}
         <Routes>
           <Route
@@ -128,6 +130,7 @@ function App() {
           <Route path="/signup" element={<SignUp></SignUp>}></Route>
           <Route path="/userdash" element={<UserDash></UserDash>}></Route>
           <Route
+            exact
             path="/offcanvas"
             element={
               localStorage.getItem("isloggedIn") ? (
@@ -155,6 +158,7 @@ function App() {
             element={<BlogDetails></BlogDetails>}
           ></Route>
         </Routes>
+        {/* {window.location.pathname !== "/login" && <NavvBar />} */}
       </Router>
       {/* navbar */}
 
