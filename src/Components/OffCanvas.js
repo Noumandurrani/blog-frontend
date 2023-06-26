@@ -9,25 +9,28 @@ import {
   Nav,
   Navbar,
   OffcanvasHeader,
-  Offcanvas,
+  // Offcanvas,
   OffcanvasTitle,
   OffcanvasBody,
-  Card,
-  CardImg,
+  // Card,
+  // CardImg,
 } from "react-bootstrap";
 // import { Offcanvas } from "react-bootstrap/Offcanvas";
-import { Link } from "react-router-dom";
-import CardHeader from "react-bootstrap/esm/CardHeader";
+import { Link, useParams } from "react-router-dom";
+// import CardHeader from "react-bootstrap/esm/CardHeader";
 import { useNavigate } from "react-router-dom";
-import { userInjured } from "fontawesome";
+// import { userInjured } from "fontawesome";
 
 function OffCanvas() {
   const navgate = useNavigate();
-  const handleLogout = (e) => {
-    localStorage.clear();
-    localStorage.setItem("isloggedIn", false);
-    navgate("/");
-  };
+  const { id } = useParams();
+  console.log("offcanvas: ", id);
+  console.log("offcanvas: ", id);
+  // const handleLogout = (e) => {
+  //   localStorage.clear();
+  //   localStorage.setItem("isloggedIn", false);
+  //   navgate("/");
+  // };
   const [profilee, setProfilee] = useState(true);
   const [poste, setPoste] = useState(false);
   const userId = localStorage.getItem("userId");
@@ -57,14 +60,15 @@ function OffCanvas() {
       {/* <div>OffCanvas</div> */}
       <Navbar
         expand="lg"
-        bg="warning"
-        className="justify-content-center"
+        // bg="warning"
+        // className="justify-content-center"
         style={{
           position: "fixed",
           right: 0,
           left: 0,
           zIndex: 1000,
           boxShadow: "3px 3px 3px black",
+          backgroundColor: "#1e7859",
         }}
       >
         <Container fluid className="justify-content-space">
@@ -72,6 +76,7 @@ function OffCanvas() {
           <Navbar.Toggle
             aria-controls="off-convass"
             className="text-light bg-dark p-2 px-3"
+            // style={{backgroundColor}}
           >
             Menu
           </Navbar.Toggle>
@@ -80,12 +85,22 @@ function OffCanvas() {
               <OffcanvasTitle>User Dashboard</OffcanvasTitle>
             </OffcanvasHeader>
             <OffcanvasBody>
-              <Nav variant="underline">
+              <Nav
+                onMouseOver={(e) => {
+                  e.target.style.color = "red";
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.color = "yellow";
+                }}
+              >
                 <Nav.Link
                   href="#"
                   onClick={() => {
                     setProfilee(true);
                     setPoste(false);
+                  }}
+                  style={{
+                    color: "yellow",
                   }}
                   className="fw-bold"
                 >
@@ -98,6 +113,9 @@ function OffCanvas() {
                     setPoste(true);
                   }}
                   className="fw-bold"
+                  style={{
+                    color: "yellow",
+                  }}
                 >
                   Post
                 </Nav.Link>
@@ -110,18 +128,22 @@ function OffCanvas() {
               </Nav>
             </OffcanvasBody>
           </Navbar.Offcanvas>
-          <Button onClick={handleLogout} className="btn btn-danger">
+          {/* <Button onClick={handleLogout} className="btn btn-danger">
             Logout
-          </Button>
+          </Button> */}
         </Container>
       </Navbar>
       <div
-        className="container-fluid bg-primary"
-        style={{ marginTop: "9px", paddingTop: "45px" }}
+        className="container-fluid "
+        style={{
+          marginTop: "9px",
+          paddingTop: "45px",
+          backgroundColor: "#a19c30",
+        }}
       >
         <div className="row">
           <div
-            className="col-lg-8 col-md-8 col-sm-7 col-8"
+            className="col-lg-8 col-md-8 col-sm-12 col-12"
             style={{
               paddingTop: "15px",
               // position: "relative",
@@ -131,14 +153,14 @@ function OffCanvas() {
             }}
           >
             {profilee && <Profile></Profile>}
-            {poste && <Post></Post>}
+            {poste && <Post postPropId={id}></Post>}
           </div>
           <div
-            className="col-lg-4 col-md-4 col-sm-5 col-8 text-light"
+            className="col-lg-4 col-md-4 col-sm-12 col-12 text-light"
             style={{
               paddingTop: "10px",
-              position: "absolute",
-              right: 0,
+              // position: "absolute",
+              // right: 0,
               backgroundColor: "#d3d08b",
               border: "red",
               boxShadow: "0px 2px 10px black",

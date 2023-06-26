@@ -3,15 +3,15 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import Home from "./Components/Home";
 import About from "./Components/About";
 import Blog from "./Components/Blog";
-import logoo from "./Components/Logos/logoo.jpg";
-import logo1 from "./Components/Logos/logo1.JPG";
-import {
-  Nav,
-  NavDropdown,
-  NavItem,
-  Navbar,
-  NavbarBrand,
-} from "react-bootstrap";
+// import logoo from "./Components/Logos/logoo.jpg";
+// import logo1 from "./Components/Logos/logo1.JPG";
+// import {
+//   Nav,
+//   NavDropdown,
+//   NavItem,
+//   Navbar,
+//   NavbarBrand,
+// } from "react-bootstrap";
 import Contact from "./Components/Contact";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
@@ -156,6 +156,10 @@ function App() {
           <Route
             path="/blogdetail/:id"
             element={<BlogDetails></BlogDetails>}
+          ></Route>
+          <Route
+            path="/offcanvas/:id"
+            element={<OffCanvas></OffCanvas>}
           ></Route>
         </Routes>
         {/* {window.location.pathname !== "/login" && <NavvBar />} */}

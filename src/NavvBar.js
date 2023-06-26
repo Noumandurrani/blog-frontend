@@ -2,7 +2,17 @@ import React from "react";
 import { Navbar, Nav, NavItem, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logoo from "./Components/Logos/logoo.jpg";
+import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+// import logo1 from "./Components/Logos/logo1.JPGs"
+
 function NavvBar() {
+  const navgate = useNavigate();
+  const handleLogout = (e) => {
+    localStorage.clear();
+    // localStorage.setItem("isloggedIn", false);
+    navgate("/");
+  };
   return (
     <div>
       <Navbar
@@ -58,28 +68,47 @@ function NavvBar() {
                   </Link>
                 </NavDropdown.Item>
               </NavDropdown>
-              <NavItem style={{ marginRight: "200px" }}>
+              <NavItem style={{ marginRight: "160px" }}>
                 <Link to="/contact" className="nav-link">
                   Contact
                 </Link>
               </NavItem>
               <NavItem>
-                <Link
-                  to="/login"
-                  className="nav-link bg-warning border border-warning px-1 d-inline-block text-center"
-                  style={{ width: 100 }}
-                >
-                  Login
-                </Link>
+                {localStorage.getItem("isloggedIn") ? (
+                  <Button
+                    onClick={handleLogout}
+                    className="btn btn-danger pt-3 pb-3"
+                  >
+                    Logout
+                  </Button>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="nav-link bg-warning border border-warning px-1 d-inline-block text-center rounded"
+                    style={{ width: 100 }}
+                  >
+                    Login
+                  </Link>
+                )}
               </NavItem>
               <NavItem className="">
-                <Link
-                  to="/signup"
-                  className="nav-link border border-warning px-1 d-inline-block text-center"
-                  style={{ width: 100 }}
-                >
-                  Sign up
-                </Link>
+                {localStorage.getItem("isloggedIn") ? (
+                  <Link
+                    to="/offcanvas"
+                    className="nav-link border border-warning px-1 d-inline-block text-center rounded bg-warning text-light"
+                    style={{ width: 100 }}
+                  >
+                    UserDash
+                  </Link>
+                ) : (
+                  <Link
+                    to="/signup"
+                    className="nav-link border border-warning px-1 d-inline-block text-center rounded"
+                    style={{ width: 100 }}
+                  >
+                    Sign up
+                  </Link>
+                )}
               </NavItem>
             </Nav>
           </Navbar.Collapse>

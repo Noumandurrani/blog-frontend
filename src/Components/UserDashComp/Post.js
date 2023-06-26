@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+// import { Button, NavLink } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function Post() {
+function Post(props) {
   const [postTable, setPostTable] = useState([]);
   const userId = localStorage.getItem("userId");
+  // console.log(props.postPropId);
   useEffect(() => {
     axios
       .post("http://127.0.0.1:4000/api/project/user/posts", { user_id: userId })
@@ -18,6 +19,21 @@ function Post() {
       });
   }, []);
   const ltstPostUp = postTable.reverse();
+  /////////////publish post
+
+  console.log("post:", props.postPropId);
+  const handlePublish = (e) => {
+    // e.preventDefault();
+    axios
+      .get("http://127.0.0.1:4000/api/project/publish/post/" + props.postPropId)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  /////////////
   return (
     <div style={{}}>
       <h2>Post</h2>
@@ -53,10 +69,14 @@ function Post() {
                     {item.is_pubish ? (
                       "Yes"
                     ) : (
-                      <input
+                      <Link
+                        // key={item.id}
+                        to={`/offcanvas/${item._id}`}
                         className="btn btn-warning bg-primary"
-                        value="Publish"
-                      ></input>
+                        onClick={handlePublish}
+                      >
+                        Publish
+                      </Link>
                     )}
                   </td>
                 </tr>
