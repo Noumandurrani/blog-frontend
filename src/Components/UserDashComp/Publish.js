@@ -67,13 +67,16 @@ function Publish() {
             style={{ width: "100%" }}
             src={"http://127.0.0.1:4000/" + idData.image}
           ></img>
+          <br></br>
+          <br></br>
+
           <p>{idData.body}</p>
         </Modal.Body>
         <ModalFooter>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="secondary" onClick={handlePublish}>
+          <Button variant="primary" onClick={handlePublish}>
             Publish
           </Button>
         </ModalFooter>
