@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Post(props) {
   const [postTable, setPostTable] = useState([]);
   const userId = localStorage.getItem("userId");
-  // console.log(props.postPropId);
+  console.log(props.postPropId);
   useEffect(() => {
     axios
       .post("http://127.0.0.1:4000/api/project/user/posts", { user_id: userId })
@@ -19,21 +19,7 @@ function Post(props) {
       });
   }, []);
   const ltstPostUp = postTable.reverse();
-  /////////////publish post
 
-  console.log("post:", props.postPropId);
-  const handlePublish = (e) => {
-    // e.preventDefault();
-    axios
-      .get("http://127.0.0.1:4000/api/project/publish/post/" + props.postPropId)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  /////////////
   return (
     <div style={{}}>
       <h2>Post</h2>
@@ -71,9 +57,9 @@ function Post(props) {
                     ) : (
                       <Link
                         // key={item.id}
-                        to={`/offcanvas/${item._id}`}
+                        to={`/publish/${item._id}`}
                         className="btn btn-warning bg-primary"
-                        onClick={handlePublish}
+                        // onClick={handlePublish}
                       >
                         Publish
                       </Link>

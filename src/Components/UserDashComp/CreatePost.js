@@ -1,34 +1,18 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 // import OIP from "../Logos/OIP.jpeg";
 
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
 function CreatePost() {
+  const navgate = useNavigate();
   const [title, setTitle] = useState();
   const [body, setBody] = useState();
   const [author, setAuthor] = useState();
   const [image, setImage] = useState();
   const [category, setCategory] = useState();
   const userId = localStorage.getItem("userId");
-  //   const [postData, setPostData] = useState({
-  //     title: "",
-  //     body: "",
-  //     author: "",
-  //     image: null,
-  //     category: "",
-  //   });
-
   const handleSubmit = (event) => {
-    event.preventDefault();
-    // alert("data:" + postData.description + "////" + postData.title);
-    // setPostData({
-    //   title: title,
-    //   body: body,
-    //   author: author,
-    //   image: image,
-    //   category: category,
-    // });
+    // event.preventDefault();
     const formData = new FormData();
     formData.append("title", title);
     formData.append("body", body);
@@ -48,6 +32,7 @@ function CreatePost() {
       .catch((error) => {
         console.log(error);
       });
+    navgate("/offcanvas");
   };
   return (
     <div style={{ marginTop: 120 }}>
@@ -107,12 +92,15 @@ function CreatePost() {
           ></input>
           <br></br>
           <input
-            className="btn btn-light border-dark"
+            className="btn btn-light border border-dark"
             value="Submit"
             type="submit"
           ></input>
         </form>
       </div>
+      <br></br>
+      <br></br>
+      <br></br>
     </div>
   );
 }

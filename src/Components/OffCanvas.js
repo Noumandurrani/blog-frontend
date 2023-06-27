@@ -23,9 +23,8 @@ import { useNavigate } from "react-router-dom";
 
 function OffCanvas() {
   const navgate = useNavigate();
-  const { id } = useParams();
-  console.log("offcanvas: ", id);
-  console.log("offcanvas: ", id);
+  // localStorage.setItem("postIdPub", id);
+  // console.log("offcanvas: ", id);
   // const handleLogout = (e) => {
   //   localStorage.clear();
   //   localStorage.setItem("isloggedIn", false);
@@ -57,7 +56,6 @@ function OffCanvas() {
   const ltstPost = slicePost.reverse();
   return (
     <div style={{ marginTop: 120, overflow: "hidden" }}>
-      {/* <div>OffCanvas</div> */}
       <Navbar
         expand="lg"
         // bg="warning"
@@ -66,7 +64,7 @@ function OffCanvas() {
           position: "fixed",
           right: 0,
           left: 0,
-          zIndex: 1000,
+          zIndex: 300,
           boxShadow: "3px 3px 3px black",
           backgroundColor: "#1e7859",
         }}
@@ -153,7 +151,8 @@ function OffCanvas() {
             }}
           >
             {profilee && <Profile></Profile>}
-            {poste && <Post postPropId={id}></Post>}
+            {/* {poste && <Post key={id} postPropId={id}></Post>} */}
+            {poste && <Post></Post>}
           </div>
           <div
             className="col-lg-4 col-md-4 col-sm-12 col-12 text-light"

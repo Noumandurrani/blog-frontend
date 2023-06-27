@@ -24,6 +24,7 @@ function NavvBar() {
           left: 0,
           right: 0,
           top: 0,
+          zIndex: 2000,
           paddingTop: 10,
           paddingBottom: 10,
           // fontWeight: "",
