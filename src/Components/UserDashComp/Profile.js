@@ -118,7 +118,7 @@ function Profile() {
           }}
         ></input>
       </form> */}
-      <i className="bi bi-camera-fill"></i>
+      {/* <i className="bi bi-camera-fill"></i> */}
       <h2>{userData.firstName + " " + userData.lastName}</h2>
       {/* <h2>{userData._id}</h2> */}
       {/* <h2>{userData.email}</h2> */}

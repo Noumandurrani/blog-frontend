@@ -25,6 +25,7 @@ function LatestPost() {
     <div className="container text-start">
       <div className="row">
         {rvrsArr.map((item) => (
+          // item.is_publish === true ? () : ("")
           <div
             className="col-lg-4"
             // onMouseOver={(e) => {

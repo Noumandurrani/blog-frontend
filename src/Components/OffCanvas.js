@@ -88,7 +88,7 @@ function OffCanvas() {
                   e.target.style.color = "red";
                 }}
                 onMouseOut={(e) => {
-                  e.target.style.color = "yellow";
+                  e.target.style.color = "black";
                 }}
               >
                 <Nav.Link
@@ -98,7 +98,7 @@ function OffCanvas() {
                     setPoste(false);
                   }}
                   style={{
-                    color: "yellow",
+                    color: "black",
                   }}
                   className="fw-bold"
                 >
@@ -112,7 +112,7 @@ function OffCanvas() {
                   }}
                   className="fw-bold"
                   style={{
-                    color: "yellow",
+                    color: "black",
                   }}
                 >
                   Post
