@@ -98,15 +98,16 @@ function UpdatePost() {
   // };
   return (
     <div style={{ marginTop: 120 }}>
-      <h3>update post</h3>
+      {/* <h3>update post</h3> */}
       {/* <Editor editorState={editorState} onChange={handleEditorChange}></Editor> */}
       {/* <MDBBtn onClick={submitUpdatedContent}>Update Post</MDBBtn> */}
       <Modal show={show} onHide={handleClose} fullscreen={true}>
         <Modal.Header closeButton>
-          <Modal.Title>Title: {detail.title}</Modal.Title>
+          <Modal.Title className="text-primary">
+            Title: {detail.title}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Author: {detail.author}</h4>
           {/* <img
             style={{ width: "100%" }}
             src={"http://127.0.0.1:4000/" + idData.image}
@@ -117,6 +118,8 @@ function UpdatePost() {
           ></Editor>
           <br></br>
           <br></br>
+          <h6 className="text-danger text-end">Author: {detail.author}</h6>
+
           {/* <p>{idData.body}</p> */}
         </Modal.Body>
         <ModalFooter>

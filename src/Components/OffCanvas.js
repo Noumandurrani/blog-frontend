@@ -19,6 +19,7 @@ import {
 import { Link, useParams } from "react-router-dom";
 // import CardHeader from "react-bootstrap/esm/CardHeader";
 import { useNavigate } from "react-router-dom";
+import { MDBBtn } from "mdb-react-ui-kit";
 // import { userInjured } from "fontawesome";
 
 function OffCanvas() {
@@ -150,7 +151,8 @@ function OffCanvas() {
         style={{
           marginTop: "9px",
           paddingTop: "45px",
-          backgroundColor: "#a19c30",
+          backgroundColor: "#0f2135",
+          color: "white",
         }}
       >
         <div className="row">
@@ -159,7 +161,7 @@ function OffCanvas() {
             style={{
               paddingTop: "15px",
               // position: "relative",
-              backgroundColor: "#a49f2f",
+              backgroundColor: "#0f2135",
               height: "100%",
               textAlign: "center",
             }}
@@ -174,7 +176,7 @@ function OffCanvas() {
               paddingTop: "10px",
               // position: "absolute",
               // right: 0,
-              backgroundColor: "#d3d08b",
+              backgroundColor: "#0f2132",
               border: "red",
               boxShadow: "0px 2px 10px black",
             }}
@@ -187,7 +189,7 @@ function OffCanvas() {
                 marginTop: "-2px",
                 paddingLeft: "12px",
                 paddingRight: "6px",
-                backgroundColor: "#d3d08b",
+                backgroundColor: "white",
                 right: "14px",
                 zIndex: 200,
 
@@ -207,7 +209,7 @@ function OffCanvas() {
                   <div
                     style={{
                       width: "",
-                      boxShadow: "5px 5px 5px gray, -3px -3px 3px gray",
+                      boxShadow: "5px 5px 5px black, -3px -3px 3px black",
                       marginTop: "70px",
                     }}
                     className="card mb-5 border-success"
@@ -238,16 +240,23 @@ function OffCanvas() {
                         className="border border-dark border-3"
                       ></img>
                       <p className="">{item.author}</p>
-                      <Dropdown>
+
+                      <Dropdown
+                        className=""
+                        style={{ borderLeft: "1px solid black" }}
+                      >
                         {/* <i
                           className="bi bi-three-dots-vertical"
                           id="sharePost"
                         ></i> */}
                         <Dropdown.Toggle
                           //   variant="primary"
-                          className="bi bi-three-dots-vertical bg-light text-dark border-0 "
+                          className="bi bi-three-dots-vertical text-dark"
                           id="sharePost"
-                          //   style={{ display: "none" }}
+                          style={{
+                            boxShadow: "none",
+                            backgroundColor: "white",
+                          }}
                         ></Dropdown.Toggle>
                         <Dropdown.Menu
                           style={{
@@ -276,9 +285,7 @@ function OffCanvas() {
                         to={`/blogdetail/${item._id}`}
                         className="d-flex justify-content-end text-decoration-none"
                       >
-                        <div className="btn btn-light border-dark">
-                          See details
-                        </div>
+                        <MDBBtn className="btn-dark">See details</MDBBtn>
                       </Link>
                     </div>
                   </div>
@@ -289,16 +296,16 @@ function OffCanvas() {
               {data == "" ? (
                 <h4 className="text-danger">No Posts</h4>
               ) : (
-                <Button
+                <MDBBtn
                   className="btn bg-light fw-bold fs-5 text-black"
                   style={{
                     width: "100%",
                     padding: "10px",
-                    boxShadow: "5px 5px 5px gray, -3px -3px 3px gray",
+                    // boxShadow: "2px 2px 2px gray, -2px -2px 2px ",
                   }}
                 >
                   See more
-                </Button>
+                </MDBBtn>
               )}
             </div>
 

@@ -71,7 +71,7 @@ function Profile() {
             marginBottom: "20px",
             // boxShadow: "5px 5px 5px black",
           }}
-          className="border border-dark border-4"
+          className="border border-light border-4"
           onClick={handleOpenPopup}
         ></img>
         <Dp

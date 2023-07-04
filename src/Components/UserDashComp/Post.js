@@ -34,8 +34,8 @@ function Post(props) {
           <h4 className="mt-3 text-danger">No Post details</h4>
         ) : (
           <table
-            className="table border border-3 border-danger bg-light mt-3"
-            style={{ boxShadow: "2px 3px 6px #565656" }}
+            className="table border border-2 border-dark bg-light mt-3"
+            style={{ boxShadow: "2px 2px 3px #565656" }}
           >
             <thead className="thead-dark">
               <tr className="">
