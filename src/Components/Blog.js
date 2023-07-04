@@ -7,18 +7,40 @@ import { Dropdown, Popover } from "react-bootstrap";
 import Popup from "./BlogComp/Popup";
 function Blog() {
   const [data, setData] = useState([]);
+  // const [id, setId] = useState();
   useEffect(() => {
     axios
       .get("http://127.0.0.1:4000/api/project/post-all")
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setData(response.data.data);
+        console.log(response.data.data);
+        // data.map((item) => {
+        //   setId(item.user_id);
+        //   console.log(item.user_id);
+        //   console.log(id);
+        // });
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
   // const stringBody = data.body.length;
+
+  /////
+  //get user dp for cards (author)
+  // const [getDp, setGetDp] = useState({});
+  // useEffect(() => {
+  //   axios
+  //     .get("http://127.0.0.1:4000/api/project/get-user/" + id)
+  //     .then((response) => {
+  //       console.log(response.data.userData);
+  //       // setGetDp(response.data.userData);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
   return (
     <div style={{ marginTop: 120 }}>
       <h3
@@ -44,11 +66,11 @@ function Blog() {
                 {item.is_pubish === true ? (
                   <div
                     style={{ width: "" }}
-                    className="card mb-5 border-success"
+                    className="card mb-5 border-success "
                     key={item.id}
                   >
                     <img
-                      className="card-img-top"
+                      className="card-img-top "
                       src={"http://127.0.0.1:4000/" + item.image}
                       alt="loading image"
                       style={{ height: "280px" }}
@@ -60,6 +82,16 @@ function Blog() {
                         justifyContent: "space-between",
                       }}
                     >
+                      {/* <img
+                        // key={getDp.id}
+                        src={"http://127.0.0.1:4000/" + getDp.profile}
+                        alt="dp"
+                        style={{
+                          width: "40px",
+                          boxShadow: "2px 2px 2px gray, -2px -2px 2px gray",
+                          borderRadius: "20px",
+                        }}
+                      ></img> */}
                       <p className="">{item.author}</p>
                       <Dropdown>
                         <Dropdown.Toggle
@@ -77,6 +109,7 @@ function Blog() {
                         >
                           <Dropdown.Item className="d-flex flex-row justify-content-between">
                             <i className="bi bi-share-fill"></i>
+                            <i class="fa-solid fa-list"></i>
                             <div
                               className=""
                               // style={{ marginLeft: "15px", marginTop: "2px" }}

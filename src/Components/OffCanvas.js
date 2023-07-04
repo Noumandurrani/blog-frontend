@@ -54,6 +54,20 @@ function OffCanvas() {
   }, []);
   const slicePost = data.slice(-2);
   const ltstPost = slicePost.reverse();
+
+  ///get user dp for cards (author)
+  const [getDp, setGetDp] = useState({});
+  useEffect(() => {
+    axios
+      .get("http://127.0.0.1:4000/api/project/get-user/" + userId)
+      .then((response) => {
+        console.log(response.data.userData);
+        setGetDp(response.data.userData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div style={{ marginTop: 120, overflow: "hidden" }}>
       <Navbar
@@ -78,7 +92,7 @@ function OffCanvas() {
           >
             Menu
           </Navbar.Toggle>
-          <Navbar.Offcanvas id={"off-convass"} placement="start">
+          <Navbar.Offcanvas id={"off-convass"} placement="top">
             <OffcanvasHeader closeButton>
               <OffcanvasTitle>User Dashboard</OffcanvasTitle>
             </OffcanvasHeader>
@@ -212,6 +226,17 @@ function OffCanvas() {
                         justifyContent: "space-between",
                       }}
                     >
+                      <img
+                        // key={getDp.id}
+                        src={"http://127.0.0.1:4000/" + getDp.profile}
+                        alt="dp"
+                        style={{
+                          width: "40px",
+                          // boxShadow: "2px 2px 2px gray, -2px -2px 2px gray",
+                          borderRadius: "20px",
+                        }}
+                        className="border border-dark border-3"
+                      ></img>
                       <p className="">{item.author}</p>
                       <Dropdown>
                         {/* <i

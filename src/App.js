@@ -24,6 +24,8 @@ import OffCanvas from "./Components/OffCanvas";
 import { useState } from "react";
 import NavvBar from "./NavvBar";
 import Publish from "./Components/UserDashComp/Publish";
+import Post from "./Components/UserDashComp/Post";
+import UpdatePost from "./Components/UserDashComp/PostUpdate/UpdatePost";
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
   // const handleIsLogin = ()=>{
@@ -159,6 +161,10 @@ function App() {
             element={<BlogDetails></BlogDetails>}
           ></Route>
           <Route path="/publish/:id" element={<Publish></Publish>}></Route>
+          <Route
+            path="/postupdate/:id"
+            element={<UpdatePost></UpdatePost>}
+          ></Route>
         </Routes>
         {/* {window.location.pathname !== "/login" && <NavvBar />} */}
       </Router>

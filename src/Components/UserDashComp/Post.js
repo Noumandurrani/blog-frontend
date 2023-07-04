@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Post(props) {
   const [postTable, setPostTable] = useState([]);
   const userId = localStorage.getItem("userId");
-  console.log(props.postPropId);
+  // console.log(props.postPropId);
   useEffect(() => {
     axios
       .post("http://127.0.0.1:4000/api/project/user/posts", { user_id: userId })
@@ -40,8 +40,9 @@ function Post(props) {
             <thead className="thead-dark">
               <tr className="">
                 <th className="col-lg-5 px-3 text-start">Post Title</th>
-                <th className="col-lg-3">isApproved</th>
-                <th className="col-lg-3">isPublish</th>
+                <th className="col-lg-2">isApproved</th>
+                <th className="col-lg-2">isPublish</th>
+                <th className="col-lg-2">editPost</th>
               </tr>
             </thead>
             <tbody>
@@ -64,6 +65,11 @@ function Post(props) {
                         Publish
                       </Link>
                     )}
+                  </td>
+                  <td>
+                    <Link to={`/postupdate/${item._id}`}>
+                      <i class="fa fa-edit fs-4 fw-bold text-primary"></i>
+                    </Link>
                   </td>
                 </tr>
               ))}

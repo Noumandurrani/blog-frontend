@@ -8,6 +8,7 @@ function Publish() {
   const [show, setShow] = useState(true);
   const navgate = useNavigate();
   const { id } = useParams();
+  const [change, setChange] = useState(false);
 
   const handleClose = () => {
     setShow(false);
@@ -22,6 +23,7 @@ function Publish() {
       .then((response) => {
         console.log(response);
         setIdData(response.data.data);
+        setChange(true);
       })
       .catch((error) => {
         console.log(error);
@@ -46,6 +48,7 @@ function Publish() {
       .get("http://127.0.0.1:4000/api/project/publish/post/" + id)
       .then((res) => {
         console.log(res.data);
+        setChange(false);
       })
       .catch((err) => {
         console.log(err);
@@ -76,9 +79,12 @@ function Publish() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handlePublish}>
-            Publish
-          </Button>
+          {change && (
+            <Button variant="primary" onClick={handlePublish}>
+              Publish
+            </Button>
+          )}
+          {!change && <Button variant="dark">Published</Button>}
         </ModalFooter>
       </Modal>
     </div>
