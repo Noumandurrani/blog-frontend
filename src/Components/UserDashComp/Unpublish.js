@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-function Publish() {
+function Unpublish() {
   const [show, setShow] = useState(true);
   const navgate = useNavigate();
   const { id } = useParams();
@@ -30,22 +30,10 @@ function Publish() {
       });
   }, []);
 
-  /////////////publish post
-  const handlePublish = (e) => {
-    // e.preventDefault();
-    // const [postPub, setPostPub] = useState();
-    //   const fetchPostPub = async () => {
-    //     try {
-    //       const res = await axios.get(
-    //         "http://127.0.0.1:4000/api/project/publish/post/" + id
-    //       );
-    //       //   setPostPub(res.data.data);
-    //     } catch (err) {
-    //       console.log("error:", err);
-    //     }
-    //   };
+  /////////////Unpublish post
+  const handleUnpublish = (e) => {
     axios
-      .get("http://127.0.0.1:4000/api/project/publish/post/" + id)
+      .get("http://127.0.0.1:4000/api/project/unpublish/post/" + id)
       .then((res) => {
         console.log(res.data);
         setChange(false);
@@ -54,12 +42,6 @@ function Publish() {
         console.log(err);
       });
   };
-
-  ////////
-  //   useEffect(() => {
-  //     fetchPostPub();
-  //   }, []);
-  /////////////
   return (
     <div>
       <Modal show={show} onHide={handleClose} fullscreen={true}>
@@ -82,15 +64,15 @@ function Publish() {
             Close
           </Button>
           {change && (
-            <Button variant="primary" onClick={handlePublish}>
-              Publish
+            <Button variant="danger" onClick={handleUnpublish}>
+              UnPublish
             </Button>
           )}
-          {!change && <Button variant="dark">Published</Button>}
+          {!change && <Button variant="dark">UnPublished</Button>}
         </ModalFooter>
       </Modal>
     </div>
   );
 }
 
-export default Publish;
+export default Unpublish;

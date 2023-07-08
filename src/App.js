@@ -26,6 +26,9 @@ import NavvBar from "./NavvBar";
 import Publish from "./Components/UserDashComp/Publish";
 import Post from "./Components/UserDashComp/Post";
 import UpdatePost from "./Components/UserDashComp/PostUpdate/UpdatePost";
+import ForgotPass from "./Components/ForgotPass/ForgotPass";
+import Unpublish from "./Components/UserDashComp/Unpublish";
+
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
   // const handleIsLogin = ()=>{
@@ -162,9 +165,15 @@ function App() {
           ></Route>
           <Route path="/publish/:id" element={<Publish></Publish>}></Route>
           <Route
+            path="/unpublish/:id"
+            element={<Unpublish></Unpublish>}
+          ></Route>
+
+          <Route
             path="/postupdate/:id"
             element={<UpdatePost></UpdatePost>}
           ></Route>
+          <Route path="/forgot/Password" Component={ForgotPass}></Route>
         </Routes>
         {/* {window.location.pathname !== "/login" && <NavvBar />} */}
       </Router>

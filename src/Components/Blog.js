@@ -7,19 +7,21 @@ import { Dropdown, Popover } from "react-bootstrap";
 import Popup from "./BlogComp/Popup";
 function Blog() {
   const [data, setData] = useState([]);
-  // const [id, setId] = useState();
+  const [userId, setUserId] = useState({});
   useEffect(() => {
     axios
       .get("http://127.0.0.1:4000/api/project/post-all")
       .then((response) => {
         // console.log(response);
         setData(response.data.data);
-        console.log(response.data.data);
-        // data.map((item) => {
-        //   setId(item.user_id);
-        //   console.log(item.user_id);
-        //   console.log(id);
-        // });
+        // console.log(response.data.data);
+        // data.map((item, index) => {
+        // setId(item.user_id);
+        // console.log(item.user_id);
+        // setUserId(item.user_id);
+        // console.log(userId);
+        // }
+        // );
       })
       .catch((error) => {
         console.log(error);

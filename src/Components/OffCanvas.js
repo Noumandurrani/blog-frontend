@@ -31,8 +31,8 @@ function OffCanvas() {
   //   localStorage.setItem("isloggedIn", false);
   //   navgate("/");
   // };
-  const [profilee, setProfilee] = useState(true);
-  const [poste, setPoste] = useState(false);
+  const [profilee, setProfilee] = useState(false);
+  const [poste, setPoste] = useState(true);
   const userId = localStorage.getItem("userId");
   // const [userid, setUserId] = useState(userId);
   //////////////user data api
@@ -81,7 +81,7 @@ function OffCanvas() {
           left: 0,
           zIndex: 300,
           boxShadow: "3px 3px 3px black",
-          backgroundColor: "#1e7859",
+          backgroundColor: "#1b2831",
         }}
       >
         <Container fluid className="justify-content-space">
@@ -151,7 +151,7 @@ function OffCanvas() {
         style={{
           marginTop: "9px",
           paddingTop: "45px",
-          backgroundColor: "#0f2135",
+          backgroundColor: "#05121b",
           color: "white",
         }}
       >
@@ -161,7 +161,7 @@ function OffCanvas() {
             style={{
               paddingTop: "15px",
               // position: "relative",
-              backgroundColor: "#0f2135",
+              backgroundColor: "#05121b",
               height: "100%",
               textAlign: "center",
             }}
@@ -249,15 +249,19 @@ function OffCanvas() {
                           className="bi bi-three-dots-vertical"
                           id="sharePost"
                         ></i> */}
+
                         <Dropdown.Toggle
                           //   variant="primary"
-                          className="bi bi-three-dots-vertical text-dark"
+                          className="text-dark drop-tgl"
                           id="sharePost"
                           style={{
+                            // "::after": { display: "none" },
                             boxShadow: "none",
                             backgroundColor: "white",
                           }}
-                        ></Dropdown.Toggle>
+                        >
+                          <i className="bi bi-three-dots-vertical"></i>
+                        </Dropdown.Toggle>
                         <Dropdown.Menu
                           style={{
                             boxShadow: "2px 2px 2px gray",

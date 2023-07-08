@@ -54,7 +54,12 @@ function Post(props) {
                   </td>
                   <td className="col-lg-3">
                     {item.is_pubish ? (
-                      "Yes"
+                      <Link
+                        to={`/unpublish/${item._id}`}
+                        className="btn btn-warning bg-danger"
+                      >
+                        UnPublish
+                      </Link>
                     ) : (
                       <Link
                         // key={item.id}

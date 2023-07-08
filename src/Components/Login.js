@@ -33,7 +33,20 @@ function Login() {
         console.log("error loggin", err);
       });
   };
-
+  ////////////forgot password reset link email
+  const handleResetLink = () => {
+    axios
+      .post("http://127.0.0.1:4000/api/project/reset/Link", {
+        email: loginEmail,
+      })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   return (
     <div style={{ marginTop: 150 }}>
       {/* <h3
@@ -107,9 +120,13 @@ function Login() {
                 ></input>
               </div>
               <div className=" mb-3">
-                <div style={{ textDecoration: "none" }}>
+                <Link
+                  // to="/forgot/password"
+                  style={{ textDecoration: "none" }}
+                  onClick={handleResetLink}
+                >
                   Forgot your password?
-                </div>
+                </Link>
               </div>
               <button
                 className="btn btn-dark border border-dark px-5 pt-2 pb-2 mt-2"
