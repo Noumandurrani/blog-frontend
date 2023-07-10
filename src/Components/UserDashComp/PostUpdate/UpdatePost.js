@@ -129,7 +129,11 @@ function UpdatePost() {
           {change && (
             <MDBBtn onClick={submitUpdatedContent}>Update Post</MDBBtn>
           )}
-          {!change && <button className="btn btn-dark">Updated</button>}
+          {!change && (
+            <div className="bg-dark text-light px-3 pt-1 pb-1 rounded border border-dark ">
+              Updated
+            </div>
+          )}
         </ModalFooter>
       </Modal>
     </div>

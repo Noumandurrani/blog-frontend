@@ -28,6 +28,7 @@ import Post from "./Components/UserDashComp/Post";
 import UpdatePost from "./Components/UserDashComp/PostUpdate/UpdatePost";
 import ForgotPass from "./Components/ForgotPass/ForgotPass";
 import Unpublish from "./Components/UserDashComp/Unpublish";
+import DeletePost from "./Components/UserDashComp/PostUpdate/DeletePost";
 
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -172,6 +173,10 @@ function App() {
           <Route
             path="/postupdate/:id"
             element={<UpdatePost></UpdatePost>}
+          ></Route>
+          <Route
+            path="/delpost/:id"
+            element={<DeletePost></DeletePost>}
           ></Route>
           <Route path="/forgot/Password" Component={ForgotPass}></Route>
         </Routes>

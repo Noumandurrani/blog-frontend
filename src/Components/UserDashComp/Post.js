@@ -22,7 +22,7 @@ function Post(props) {
 
   return (
     <div style={{}}>
-      <h2>Post</h2>
+      <h2>Posts</h2>
       {/* <h2>{userId}</h2> */}
       <div className=" ">
         <Link to="/offcanvas/createpost" className="btn btn-primary">
@@ -34,25 +34,32 @@ function Post(props) {
           <h4 className="mt-3 text-danger">No Post details</h4>
         ) : (
           <table
-            className="table border border-2 border-dark bg-light mt-3"
+            className="col-lg-12 col-md-12 col-sm-12 col-12 table border border-2 border-dark bg-light mt-3"
             style={{ boxShadow: "2px 2px 3px #565656" }}
           >
             <thead className="thead-dark">
               <tr className="">
-                <th className="col-lg-5 px-3 text-start">Post Title</th>
-                <th className="col-lg-2">isApproved</th>
-                <th className="col-lg-2">isPublish</th>
-                <th className="col-lg-2">editPost</th>
+                <th className="col-lg-4 col-md-4 col-sm-4 col-4 px-3 text-start">
+                  Post Title
+                </th>
+                <th className="col-lg-2 col-md-2 col-sm-2 col-2">
+                  is Approved
+                </th>
+                <th className="col-lg-2 col-md-2 col-sm-2 col-2">is Publish</th>
+                <th className="col-lg-2 col-md-2 col-sm-2 col-2">edit Post</th>
+                <th className="col-lg-2 col-md-2 col-sm-2 col-2">del Post</th>
               </tr>
             </thead>
             <tbody>
               {ltstPostUp.map((item) => (
                 <tr key={item.id}>
-                  <td className="col-lg-5 px-3 text-start">{item.title}</td>
-                  <td className="col-lg-3">
+                  <td className="col-lg-2 col-md-2 col-sm-2 col-2 px-3 text-start">
+                    {item.title}
+                  </td>
+                  <td className="col-lg-2 col-md-2 col-sm-2 col-2">
                     {item.is_approvedByAdmin ? "Ok" : "No"}
                   </td>
-                  <td className="col-lg-3">
+                  <td className="col-lg-2 col-md-2 col-sm-2 col-2">
                     {item.is_pubish ? (
                       <Link
                         to={`/unpublish/${item._id}`}
@@ -71,9 +78,15 @@ function Post(props) {
                       </Link>
                     )}
                   </td>
-                  <td>
+                  <td className="col-lg-2 col-md-2 col-sm-2 col-2">
                     <Link to={`/postupdate/${item._id}`}>
                       <i class="fa fa-edit fs-4 fw-bold text-primary"></i>
+                    </Link>
+                  </td>
+                  <td className="col-lg-2 col-md-2 col-sm-2 col-2">
+                    <Link to={`/delpost/${item._id}`}>
+                      {" "}
+                      <i class="fa fa-solid fa-trash fs-4 text-danger"></i>
                     </Link>
                   </td>
                 </tr>

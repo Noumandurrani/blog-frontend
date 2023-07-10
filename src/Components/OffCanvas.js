@@ -82,18 +82,23 @@ function OffCanvas() {
           zIndex: 300,
           boxShadow: "3px 3px 3px black",
           backgroundColor: "#1b2831",
+          // color: "",
         }}
       >
         <Container fluid className="justify-content-space">
           {/* <Navbar.Brand href="#"></Navbar.Brand> */}
           <Navbar.Toggle
             aria-controls="off-convass"
-            className="text-light bg-dark p-2 px-3"
+            className="btn text-light bg-dark p-2 px-3"
             // style={{backgroundColor}}
           >
             Menu
           </Navbar.Toggle>
-          <Navbar.Offcanvas id={"off-convass"} placement="top">
+          <Navbar.Offcanvas
+            id={"off-convass"}
+            placement="top"
+            style={{ backgroundColor: "#1b2831" }}
+          >
             <OffcanvasHeader closeButton>
               <OffcanvasTitle>User Dashboard</OffcanvasTitle>
             </OffcanvasHeader>
@@ -103,7 +108,7 @@ function OffCanvas() {
                   e.target.style.color = "red";
                 }}
                 onMouseOut={(e) => {
-                  e.target.style.color = "black";
+                  e.target.style.color = "white";
                 }}
               >
                 <Nav.Link
@@ -113,7 +118,7 @@ function OffCanvas() {
                     setPoste(false);
                   }}
                   style={{
-                    color: "black",
+                    color: "white",
                   }}
                   className="fw-bold"
                 >
@@ -127,23 +132,14 @@ function OffCanvas() {
                   }}
                   className="fw-bold"
                   style={{
-                    color: "black",
+                    color: "white",
                   }}
                 >
-                  Post
+                  Posts
                 </Nav.Link>
-                {/* <Link to="/profile" className="nav-link">
-                  Profile
-                </Link> */}
-                {/* <Link to="/post" className="nav-link">
-                  Post
-                </Link> */}
               </Nav>
             </OffcanvasBody>
           </Navbar.Offcanvas>
-          {/* <Button onClick={handleLogout} className="btn btn-danger">
-            Logout
-          </Button> */}
         </Container>
       </Navbar>
       <div
@@ -167,15 +163,12 @@ function OffCanvas() {
             }}
           >
             {profilee && <Profile></Profile>}
-            {/* {poste && <Post key={id} postPropId={id}></Post>} */}
             {poste && <Post></Post>}
           </div>
           <div
             className="col-lg-4 col-md-4 col-sm-12 col-12 text-light"
             style={{
               paddingTop: "10px",
-              // position: "absolute",
-              // right: 0,
               backgroundColor: "#0f2132",
               border: "red",
               boxShadow: "0px 2px 10px black",
@@ -194,8 +187,6 @@ function OffCanvas() {
                 zIndex: 200,
 
                 boxShadow: "0px 3px 3px black",
-
-                // paddingRight: "12px",
               }}
             >
               Latest Posts
@@ -229,12 +220,11 @@ function OffCanvas() {
                       }}
                     >
                       <img
-                        // key={getDp.id}
                         src={"http://127.0.0.1:4000/" + getDp.profile}
                         alt="dp"
                         style={{
                           width: "40px",
-                          // boxShadow: "2px 2px 2px gray, -2px -2px 2px gray",
+
                           borderRadius: "20px",
                         }}
                         className="border border-dark border-3"
@@ -245,17 +235,10 @@ function OffCanvas() {
                         className=""
                         style={{ borderLeft: "1px solid black" }}
                       >
-                        {/* <i
-                          className="bi bi-three-dots-vertical"
-                          id="sharePost"
-                        ></i> */}
-
                         <Dropdown.Toggle
-                          //   variant="primary"
                           className="text-dark drop-tgl"
                           id="sharePost"
                           style={{
-                            // "::after": { display: "none" },
                             boxShadow: "none",
                             backgroundColor: "white",
                           }}
@@ -270,12 +253,7 @@ function OffCanvas() {
                         >
                           <Dropdown.Item className="d-flex flex-row justify-content-between">
                             <i className="bi bi-share-fill"></i>
-                            <div
-                              className=""
-                              // style={{ marginLeft: "15px", marginTop: "2px" }}
-                            >
-                              Share Post
-                            </div>
+                            <div className="">Share Post</div>
                           </Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
