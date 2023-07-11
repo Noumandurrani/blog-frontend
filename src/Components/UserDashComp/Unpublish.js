@@ -64,7 +64,7 @@ function Unpublish() {
             Close
           </Button>
           {change && (
-            <Button variant="danger" onClick={handleUnpublish}>
+            <Button variant="warning" onClick={handleUnpublish}>
               UnPublish
             </Button>
           )}

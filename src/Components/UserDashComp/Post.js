@@ -63,7 +63,7 @@ function Post(props) {
                     {item.is_pubish ? (
                       <Link
                         to={`/unpublish/${item._id}`}
-                        className="btn btn-warning bg-danger"
+                        className="btn btn-warning bg-warning"
                       >
                         UnPublish
                       </Link>
@@ -86,7 +86,7 @@ function Post(props) {
                   <td className="col-lg-2 col-md-2 col-sm-2 col-2">
                     <Link to={`/delpost/${item._id}`}>
                       {" "}
-                      <i class="fa fa-solid fa-trash fs-4 text-danger"></i>
+                      <i class="fa fa-solid fa-trash fa-bounce fs-4 text-danger"></i>
                     </Link>
                   </td>
                 </tr>

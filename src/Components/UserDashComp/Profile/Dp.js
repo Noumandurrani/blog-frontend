@@ -8,6 +8,7 @@ function Dp({ showPopupProfile, setShowPopupProfile }) {
   const userId = localStorage.getItem("userId");
   const [userData, setUserData] = useState({});
   const navgate = useNavigate();
+  const [change, setChange] = useState(false);
 
   useEffect(() => {
     axios
@@ -27,6 +28,10 @@ function Dp({ showPopupProfile, setShowPopupProfile }) {
   ///////////
   const handleClose = () => {
     setShowPopupProfile(false);
+  };
+  //////////
+  const handleSaveBtn = () => {
+    setChange(true);
   };
   // set profile
   const [profile, setProfile] = useState();
@@ -48,6 +53,7 @@ function Dp({ showPopupProfile, setShowPopupProfile }) {
       .catch((err) => {
         console.log(err);
       });
+    // setChange(true);
   };
   return (
     <Modal show={showPopupProfile} onHide={handleClose} className="popup">
@@ -69,7 +75,7 @@ function Dp({ showPopupProfile, setShowPopupProfile }) {
         ></img>
       </Modal.Body>
       <Modal.Footer>
-        <form onSubmit={handleSetProfile}>
+        <form onChange={handleSaveBtn} onSubmit={handleSetProfile}>
           <label>
             <i className="btn btn-primary mx-2">Upload photo</i>
             <input
@@ -78,10 +84,16 @@ function Dp({ showPopupProfile, setShowPopupProfile }) {
               onChange={(e) => {
                 setProfile(e.target.files[0]);
               }}
-              className="d-none "
+              className="d-none"
             ></input>
           </label>
-          <input className="btn btn-success" type="Submit" value="save"></input>
+          {change && (
+            <input
+              className="btn btn-success"
+              type="Submit"
+              value="save"
+            ></input>
+          )}
         </form>
       </Modal.Footer>
     </Modal>

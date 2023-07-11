@@ -78,14 +78,15 @@ function NavvBar() {
                 {localStorage.getItem("isloggedIn") ? (
                   <Button
                     onClick={handleLogout}
-                    className="btn btn-danger pt-3 pb-3"
+                    className="btn fs-6 btn-danger px-3"
+                    style={{ paddingTop: "11px", paddingBottom: "10px" }}
                   >
                     Logout
                   </Button>
                 ) : (
                   <Link
                     to="/login"
-                    className="nav-link bg-warning border border-warning px-1 d-inline-block text-center rounded"
+                    className="btn fs-6 nav-link bg-warning border border-warning px-1 d-inline-block text-center rounded"
                     style={{ width: 100 }}
                   >
                     Login
@@ -96,7 +97,7 @@ function NavvBar() {
                 {localStorage.getItem("isloggedIn") ? (
                   <Link
                     to="/offcanvas"
-                    className="nav-link border border-warning px-1 d-inline-block text-center rounded bg-warning text-light"
+                    className="btn fs-6 nav-link border border-warning px-1 d-inline-block text-center rounded bg-warning text-light"
                     style={{ width: 100 }}
                   >
                     UserDash
@@ -104,7 +105,7 @@ function NavvBar() {
                 ) : (
                   <Link
                     to="/signup"
-                    className="nav-link border border-warning px-1 d-inline-block text-center rounded"
+                    className="btn fs-6 nav-link border border-warning px-1 d-inline-block text-center rounded"
                     style={{ width: 100 }}
                   >
                     Sign up

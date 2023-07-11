@@ -81,7 +81,7 @@ function OffCanvas() {
           left: 0,
           zIndex: 300,
           boxShadow: "3px 3px 3px black",
-          backgroundColor: "#1b2831",
+          backgroundColor: "#1a5260",
           // color: "",
         }}
       >

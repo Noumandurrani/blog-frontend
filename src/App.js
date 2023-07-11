@@ -29,6 +29,7 @@ import UpdatePost from "./Components/UserDashComp/PostUpdate/UpdatePost";
 import ForgotPass from "./Components/ForgotPass/ForgotPass";
 import Unpublish from "./Components/UserDashComp/Unpublish";
 import DeletePost from "./Components/UserDashComp/PostUpdate/DeletePost";
+import SuperAdmin from "./Components/SuperAdmin";
 
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -142,6 +143,17 @@ function App() {
             element={
               localStorage.getItem("isloggedIn") ? (
                 <OffCanvas></OffCanvas>
+              ) : (
+                <Login></Login>
+              )
+            }
+          ></Route>
+          <Route
+            exact
+            path="/superadmin"
+            element={
+              localStorage.getItem("isloggedIn") ? (
+                <SuperAdmin></SuperAdmin>
               ) : (
                 <Login></Login>
               )

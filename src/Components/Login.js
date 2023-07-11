@@ -27,7 +27,12 @@ function Login() {
         console.log(localStorage.getItem("token"));
         console.log(localStorage.getItem("isloggedIn"));
         // setUserId(res.data._id)
-        navgate("/OffCanvas");
+
+        if (res.data.data.role === "admin") {
+          navgate("/SuperAdmin");
+        } else {
+          navgate("/OffCanvas");
+        }
       })
       .catch((err) => {
         console.log("error loggin", err);
