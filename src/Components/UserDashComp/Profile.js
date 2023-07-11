@@ -53,13 +53,14 @@ function Profile() {
   return (
     <div
       style={{
+        marginTop: "15px",
         display: "flex",
         // justifyContent: "center",
         alignItems: "center",
       }}
       className="flex-column "
     >
-      <h2>Profile</h2>
+      {/* <h2>Profile</h2> */}
       <div>
         <img
           src={"http://127.0.0.1:4000/" + userData.profile} //"http://127.0.0.1:4000/" + userData.profile

@@ -16,7 +16,7 @@ function NavvBar() {
   return (
     <div>
       <Navbar
-        bg="light"
+        // bg="light"
         expand="lg md"
         style={{
           // backgroundColor: "dark",
@@ -31,6 +31,7 @@ function NavvBar() {
           // fontSize: 18,
           zIndex: 1000,
           fontSize: "20px",
+          backgroundColor: "#f1f1f1",
         }}
       >
         <div className="container">
@@ -39,7 +40,9 @@ function NavvBar() {
               <img src={logoo} alt="logo" style={{ height: 90 }}></img>
             </Link>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navvbar-navv"></Navbar.Toggle>
+          <Navbar.Toggle className="" aria-controls="navvbar-navv">
+            <i class="fa fa-solid fa-bars fs-3"></i>
+          </Navbar.Toggle>
           <Navbar.Collapse id="navvbar-navv" style={{ justifyContent: "end" }}>
             <Nav className="" variant="underline">
               <NavItem>
@@ -79,7 +82,11 @@ function NavvBar() {
                   <Button
                     onClick={handleLogout}
                     className="btn fs-6 btn-danger px-3"
-                    style={{ paddingTop: "11px", paddingBottom: "10px" }}
+                    style={{
+                      paddingTop: "11px",
+                      paddingBottom: "10px",
+                      width: 100,
+                    }}
                   >
                     Logout
                   </Button>
@@ -95,18 +102,28 @@ function NavvBar() {
               </NavItem>
               <NavItem className="">
                 {localStorage.getItem("isloggedIn") ? (
-                  <Link
-                    to="/offcanvas"
-                    className="btn fs-6 nav-link border border-warning px-1 d-inline-block text-center rounded bg-warning text-light"
-                    style={{ width: 100 }}
-                  >
-                    UserDash
-                  </Link>
+                  localStorage.getItem("userRole") === "admin" ? (
+                    <Link
+                      to="/superadmin"
+                      className="btn fs-6 nav-link border border-warning px-1 d-inline-block text-center rounded bg-warning text-light"
+                      style={{ width: 120 }}
+                    >
+                      Admin Dash
+                    </Link>
+                  ) : (
+                    <Link
+                      to="/offcanvas"
+                      className="btn fs-6 nav-link border border-warning px-1 d-inline-block text-center rounded bg-warning text-light"
+                      style={{ width: 120 }}
+                    >
+                      User Dash
+                    </Link>
+                  )
                 ) : (
                   <Link
                     to="/signup"
                     className="btn fs-6 nav-link border border-warning px-1 d-inline-block text-center rounded"
-                    style={{ width: 100 }}
+                    style={{ width: 120 }}
                   >
                     Sign up
                   </Link>

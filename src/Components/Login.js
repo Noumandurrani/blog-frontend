@@ -27,6 +27,7 @@ function Login() {
         console.log(localStorage.getItem("token"));
         console.log(localStorage.getItem("isloggedIn"));
         // setUserId(res.data._id)
+        localStorage.setItem("userRole", res.data.data.role);
 
         if (res.data.data.role === "admin") {
           navgate("/SuperAdmin");

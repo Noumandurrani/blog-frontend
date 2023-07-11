@@ -21,11 +21,11 @@ function Post(props) {
   const ltstPostUp = postTable.reverse();
 
   return (
-    <div style={{}}>
-      <h2>Posts</h2>
+    <div style={{ marginTop: "15px" }}>
+      {/* <h2>Posts</h2> */}
       {/* <h2>{userId}</h2> */}
-      <div className=" ">
-        <Link to="/offcanvas/createpost" className="btn btn-primary">
+      <div className="text-end mx-3">
+        <Link to="/offcanvas/createpost" className=" btn btn-primary">
           New Post
         </Link>
       </div>
@@ -57,13 +57,14 @@ function Post(props) {
                     {item.title}
                   </td>
                   <td className="col-lg-2 col-md-2 col-sm-2 col-2">
-                    {item.is_approvedByAdmin ? "Ok" : "No"}
+                    {item.is_approvedByAdmin ? "Ok" : "Pending"}
                   </td>
                   <td className="col-lg-2 col-md-2 col-sm-2 col-2">
                     {item.is_pubish ? (
                       <Link
                         to={`/unpublish/${item._id}`}
                         className="btn btn-warning bg-warning"
+                        style={{ width: 120 }}
                       >
                         UnPublish
                       </Link>
@@ -73,6 +74,7 @@ function Post(props) {
                         to={`/publish/${item._id}`}
                         className="btn btn-warning bg-primary"
                         // onClick={handlePublish}
+                        style={{ width: 120 }}
                       >
                         Publish
                       </Link>

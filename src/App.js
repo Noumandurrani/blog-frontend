@@ -30,6 +30,9 @@ import ForgotPass from "./Components/ForgotPass/ForgotPass";
 import Unpublish from "./Components/UserDashComp/Unpublish";
 import DeletePost from "./Components/UserDashComp/PostUpdate/DeletePost";
 import SuperAdmin from "./Components/SuperAdmin";
+import ApprovedByAdmin from "./Components/UserDashComp/PostUpdate/ApprovedByAdmin";
+import ViewPost from "./Components/UserDashComp/PostUpdate/ViewPost";
+import ViewProfile from "./Components/UserDashComp/ViewProfile";
 
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -178,10 +181,18 @@ function App() {
           ></Route>
           <Route path="/publish/:id" element={<Publish></Publish>}></Route>
           <Route
+            path="/approve/:id"
+            element={<ApprovedByAdmin></ApprovedByAdmin>}
+          ></Route>
+          <Route path="/viewpost/:id" element={<ViewPost></ViewPost>}></Route>
+          <Route
             path="/unpublish/:id"
             element={<Unpublish></Unpublish>}
           ></Route>
-
+          <Route
+            path="/viewuser/:id"
+            element={<ViewProfile></ViewProfile>}
+          ></Route>
           <Route
             path="/postupdate/:id"
             element={<UpdatePost></UpdatePost>}

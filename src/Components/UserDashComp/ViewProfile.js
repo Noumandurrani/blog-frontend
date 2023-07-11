@@ -3,7 +3,8 @@ import { Modal, Button, ModalFooter } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-function ApprovedByAdmin() {
+
+function ViewProfile() {
   const [show, setShow] = useState(true);
   const navgate = useNavigate();
   const { id } = useParams();
@@ -14,65 +15,42 @@ function ApprovedByAdmin() {
     navgate("/superadmin");
   };
 
-  //////post details for publish
+  //////user profile details
   const [idData, setIdData] = useState({});
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:4000/api/project/post-id/${id}`)
+      .get(`http://127.0.0.1:4000/api/project/get-user/${id}`)
       .then((response) => {
         console.log(response);
-        setIdData(response.data.data);
+        setIdData(response.data.userData);
         setChange(true);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-
-  /////////////Approve post
-  const handleApprove = (e) => {
-    axios
-      .get("http://127.0.0.1:4000/api/project/post/approved/" + id)
-      .then((res) => {
-        console.log(res.data);
-        setChange(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <div>
-      {/* <h3>ApprovedByAdmin</h3> */}
+      {/* <h4>ViewProfile</h4> */}
       <Modal show={show} onHide={handleClose} fullscreen={true}>
         <Modal.Header closeButton>
-          <Modal.Title>{idData.title}</Modal.Title>
+          <Modal.Title>{`${idData.firstName} ${idData.lastName}`}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="text-center">
           <img
-            style={{ width: "100%" }}
-            src={"http://127.0.0.1:4000/" + idData.image}
+            style={{ width: "30%" }}
+            src={"http://127.0.0.1:4000/" + idData.profile}
           ></img>
-          <br></br>
-          <br></br>
-
-          <p>{idData.body}</p>
+          <br></br>s<p>{idData.body}</p>
         </Modal.Body>
         <ModalFooter>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          {change && (
-            <Button variant="primary" onClick={handleApprove}>
-              Approve
-            </Button>
-          )}
-          {!change && <Button variant="dark">Approved</Button>}
         </ModalFooter>
       </Modal>
     </div>
   );
 }
 
-export default ApprovedByAdmin;
+export default ViewProfile;
