@@ -38,10 +38,13 @@ function ViewProfile() {
         </Modal.Header>
         <Modal.Body className="text-center">
           <img
-            style={{ width: "30%" }}
+            style={{ width: "350px", height: "350px" }}
             src={"http://127.0.0.1:4000/" + idData.profile}
           ></img>
-          <br></br>s<p>{idData.body}</p>
+          <br></br>
+          <br></br>
+
+          <p>{idData.email}</p>
         </Modal.Body>
         <ModalFooter>
           <Button variant="secondary" onClick={handleClose}>

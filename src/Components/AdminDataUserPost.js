@@ -16,16 +16,19 @@ function AdminDataUserPost() {
       });
   }, []);
   return (
-    <div style={{ marginTop: 69 }}>
+    <div style={{ marginTop: 69, backgroundColor: "#00444c" }}>
       {/* <h3>AdminDataUserPost</h3> */}
-      <table className="col-lg-10 border border-dark">
+      <table
+        className="table col-lg-10 border border-dark bg-light"
+        style={{ marginTop: "12px" }}
+      >
         <thead className="bg-dark text-light text-center">
           <tr>
-            <th className="border">Post title</th>
-            <th className="border">Publish</th>
-            <th className="border">Approved</th>
-            <th className="border">Author</th>
-            <th className="border">Post View</th>
+            <th className="border text-light">Post title</th>
+            <th className="border text-light">Publish</th>
+            <th className="border text-light">Approve</th>
+            <th className="border text-light">Author</th>
+            <th className="border text-light">Post View</th>
           </tr>
         </thead>
         <tbody className="text-center">
@@ -45,7 +48,7 @@ function AdminDataUserPost() {
                     className="btn btn-warning bg-primary"
                     // onClick={handlePublish}
                   >
-                    Approve
+                    Pending
                   </Link>
                 )}
               </td>
@@ -57,24 +60,28 @@ function AdminDataUserPost() {
                   // onClick={handlePublish}
                 >
                   <abbr
-                    title="view"
+                    title="view post"
                     className="fa fa-solid fa-book text-decoration-none"
                     style={{
                       boxShadow: "none",
                       fontSize: "22px",
                       cursor: "pointer",
-                      transition: "0.3s ease",
-                      transform: "scale(1.0)",
+                      transition: "0.7s ease",
+                      // transform: "scale(1.0)",
+                      transform: "rotateY(0)",
                     }}
                     onMouseOver={(e) => {
                       //   e.target.style.boxShadow = "1px 2px 2px gray"
                       //   e.target.style.fontSize = "19px";
-                      e.target.style.transform = "scale(1.2)";
+                      // e.target.style.transform = "scale(1.2)";
+                      e.target.style.transform = "rotateY(180deg)";
+
                       //   e.target.style.transition = "2s ease";
                     }}
                     onMouseOut={(e) => {
                       //   e.target.style.boxShadow = "none";
-                      e.target.style.transform = "scale(1.0)";
+                      // e.target.style.transform = "scale(1.0)";
+                      e.target.style.transform = "rotateY(0)";
                     }}
                   ></abbr>
                 </Link>

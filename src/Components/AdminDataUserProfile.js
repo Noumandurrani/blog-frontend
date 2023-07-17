@@ -16,13 +16,17 @@ function AdminDataUserProfile() {
       });
   }, []);
   return (
-    <div style={{ marginTop: 69 }}>
-      <h3>AdminDataUserProfile</h3>
-      <table className="col-lg-10 border border-dark">
+    <div style={{ marginTop: 69, backgroundColor: "#00444c" }}>
+      {/* <h3>AdminDataUserProfile</h3> */}
+
+      <table
+        className="table col-lg-10 border border-dark bg-light"
+        style={{ marginTop: "12px" }}
+      >
         <thead className="bg-dark text-light text-center">
           <tr>
-            <th className="border">User Name</th>
-            <th className="border">Profile View</th>
+            <th className="border text-light">User Name</th>
+            <th className="border text-light">Profile View</th>
           </tr>
         </thead>
         <tbody className="text-center">

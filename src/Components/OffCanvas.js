@@ -99,7 +99,7 @@ function OffCanvas() {
             placement="top"
             style={{ backgroundColor: "#1b2831" }}
           >
-            <OffcanvasHeader closeButton>
+            <OffcanvasHeader closeButton className="bg-light">
               <OffcanvasTitle>User Dashboard</OffcanvasTitle>
             </OffcanvasHeader>
             <OffcanvasBody>
