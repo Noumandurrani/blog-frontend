@@ -1,32 +1,83 @@
-import axios from "axios";
+import axios, { all } from "axios";
 import React, { useEffect, useState } from "react";
 import OIP from "./Logos/OIP.jpeg";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "react-fontawesome";
 import { Dropdown, Popover } from "react-bootstrap";
 import Popup from "./BlogComp/Popup";
 function Blog() {
   const [data, setData] = useState([]);
   const [userId, setUserId] = useState({});
+  const { category } = useParams();
+  const [byCateg, setByCateg] = useState([]);
+  console.log(category);
+  ///////////////////////////////////////////////////////////////////////////
+  const fetchAllPosts = async () => {
+    try {
+      if (category == "all") {
+        console.log("aaaaaa : ", category);
+        const res = await axios.get(
+          "http://127.0.0.1:4000/api/project/post-all"
+        );
+        setData(res.data.data);
+        console.log(res.data.data);
+      } else {
+        console.log("bbbbbb : ", category);
+        setData([0]);
+        const res = await axios.post(
+          `http://127.0.0.1:4000/api/project/get/post/category`,
+          {
+            category: category,
+          }
+        );
+        setData(res.data.data);
+        console.log(res.data.data);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:4000/api/project/post-all")
-      .then((response) => {
-        // console.log(response);
-        setData(response.data.data);
-        // console.log(response.data.data);
-        // data.map((item, index) => {
-        // setId(item.user_id);
-        // console.log(item.user_id);
-        // setUserId(item.user_id);
-        // console.log(userId);
-        // }
-        // );
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    fetchAllPosts();
   }, []);
+  /////////////////////////////////////////////////////////////////////////
+  // useEffect(() => {
+  //   if (category === all) {
+  //     axios
+  //       .get("http://127.0.0.1:4000/api/project/post-all")
+  //       .then((response) => {
+  //         // console.log(response);
+  //         setData(response.data.data);
+  //         console.log(response.data);
+  //         // data.map((item, index) => {
+  //         // setId(item.user_id);
+  //         // console.log(item.user_id);
+  //         // setUserId(item.user_id);
+  //         // console.log(userId);
+  //         // }
+  //         // );
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //   } else {
+  //     axios
+  //       .post(`http://127.0.0.1:4000/api/project/get/post/category`, {
+  //         category: category,
+  //       })
+  //       .then((res) => {
+  //         console.log(res.data.data);
+  //         setByCateg(res.data.data);
+  //       })
+  //       .catch((err) => {
+  //         console.error(err);
+  //       });
+  //   }
+  // }, []);
+  ///////////////////////////////////////////////////////////////////////////
+  // useEffect(() => {
+
+  // }, []);
   // const stringBody = data.body.length;
 
   /////
@@ -62,30 +113,31 @@ function Blog() {
       {/* <hr></hr> */}
       <div className="container text-start">
         <div className="row">
-          {data.map((item) =>
-            item.is_approvedByAdmin === true ? (
-              item.is_pubish === true ? (
-                <div className="col-lg-4">
-                  {item.is_pubish === true ? (
-                    <div
-                      style={{ width: "" }}
-                      className="card mb-5 border-success "
-                      key={item.id}
-                    >
-                      <img
-                        className="card-img-top "
-                        src={"http://127.0.0.1:4000/" + item.image}
-                        alt="loading image"
-                        style={{ height: "280px" }}
-                      ></img>
-                      <div
-                        className="card-header"
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        {/* <img
+          {category === undefined
+            ? data.map((item) =>
+                item.is_approvedByAdmin === true ? (
+                  item.is_pubish === true ? (
+                    <div className="col-lg-4">
+                      {item.is_pubish === true ? (
+                        <div
+                          style={{ width: "" }}
+                          className="card mb-5 border-success "
+                          key={item.id}
+                        >
+                          <img
+                            className="card-img-top "
+                            src={"http://127.0.0.1:4000/" + item.image}
+                            alt="loading image"
+                            style={{ height: "280px" }}
+                          ></img>
+                          <div
+                            className="card-header"
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                            }}
+                          >
+                            {/* <img
                         // key={getDp.id}
                         src={"http://127.0.0.1:4000/" + getDp.profile}
                         alt="dp"
@@ -95,69 +147,169 @@ function Blog() {
                           borderRadius: "20px",
                         }}
                       ></img> */}
-                        <p className="">{item.author}</p>
-                        <Dropdown>
-                          <Dropdown.Toggle
-                            variant="primary"
-                            className=" bg-light text-dark border-0 d-toggle-none"
-                            id="sharePost"
-                          >
-                            <i className="bi bi-three-dots-vertical"></i>
-                          </Dropdown.Toggle>
-                          <Dropdown.Menu
-                            style={{
-                              boxShadow: "2px 2px 2px gray",
-                              placeItems: "end",
-                            }}
-                          >
-                            <Dropdown.Item className="d-flex flex-row justify-content-between">
-                              <i className="bi bi-share-fill"></i>
-                              <i class="fa-solid fa-list"></i>
-                              <div
-                                className=""
-                                // style={{ marginLeft: "15px", marginTop: "2px" }}
+                            <p className="">{item.author}</p>
+                            <Dropdown>
+                              <Dropdown.Toggle
+                                variant="primary"
+                                className=" bg-light text-dark border-0 d-toggle-none"
+                                id="sharePost"
                               >
-                                Share Post
-                              </div>
-                            </Dropdown.Item>
-                          </Dropdown.Menu>
-                        </Dropdown>
-                      </div>
-                      <div className="card-body overflow-none">
-                        <h5 className="card-title fw-bolder">{item.title}</h5>
-                        <p className="card-text">
-                          {item.body.substring(0, 25)} ....
-                        </p>
-                        <Link
-                          to={`/blogdetail/${item._id}`}
-                          className="d-flex justify-content-end text-decoration-none"
-                        >
-                          <div className="btn btn-light border-dark">
-                            See details
+                                <i className="bi bi-three-dots-vertical"></i>
+                              </Dropdown.Toggle>
+                              <Dropdown.Menu
+                                style={{
+                                  boxShadow: "2px 2px 2px gray",
+                                  placeItems: "end",
+                                }}
+                              >
+                                <Dropdown.Item className="d-flex flex-row justify-content-between">
+                                  <i className="bi bi-share-fill"></i>
+                                  <i class="fa-solid fa-list"></i>
+                                  <div
+                                    className=""
+                                    // style={{ marginLeft: "15px", marginTop: "2px" }}
+                                  >
+                                    Share Post
+                                  </div>
+                                </Dropdown.Item>
+                              </Dropdown.Menu>
+                            </Dropdown>
                           </div>
-                        </Link>
-                      </div>
-                      {/* <div className="card-footer"> */}
-                      {/* <Link
+                          <div className="card-body overflow-none">
+                            <h5 className="card-title fw-bolder">
+                              {item.title}
+                            </h5>
+                            <p className="card-text">
+                              {item.body.substring(0, 25)} ....
+                            </p>
+                            <Link
+                              to={`/blogdetail/${item._id}`}
+                              className="d-flex justify-content-end text-decoration-none"
+                            >
+                              <div className="btn btn-light border-dark">
+                                See details
+                              </div>
+                            </Link>
+                          </div>
+                          {/* <div className="card-footer"> */}
+                          {/* <Link
                 to={`/blogdetail/${item._id}`}
                 className="d-flex justify-content-end text-decoration-none"
               >
                 <div className="btn btn-light border-dark">Read more</div>
               </Link> */}
-                      {/* </div> */}
-                      {/* <hr></hr> */}
+                          {/* </div> */}
+                          {/* <hr></hr> */}
+                        </div>
+                      ) : (
+                        "not publish"
+                      )}
                     </div>
                   ) : (
-                    "not publish"
-                  )}
-                </div>
-              ) : (
-                ""
+                    ""
+                  )
+                ) : (
+                  ""
+                )
               )
-            ) : (
-              ""
-            )
-          )}
+            : data.map((item) =>
+                item.is_approvedByAdmin === true ? (
+                  item.is_pubish === true ? (
+                    <div className="col-lg-4">
+                      {item.is_pubish === true ? (
+                        <div
+                          style={{ width: "" }}
+                          className="card mb-5 border-success "
+                          key={item.id}
+                        >
+                          <img
+                            className="card-img-top "
+                            src={"http://127.0.0.1:4000/" + item.image}
+                            alt="loading image"
+                            style={{ height: "280px" }}
+                          ></img>
+                          <div
+                            className="card-header"
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                            }}
+                          >
+                            {/* <img
+                    // key={getDp.id}
+                    src={"http://127.0.0.1:4000/" + getDp.profile}
+                    alt="dp"
+                    style={{
+                      width: "40px",
+                      boxShadow: "2px 2px 2px gray, -2px -2px 2px gray",
+                      borderRadius: "20px",
+                    }}
+                  ></img> */}
+                            <p className="">{item.author}</p>
+                            <Dropdown>
+                              <Dropdown.Toggle
+                                variant="primary"
+                                className=" bg-light text-dark border-0 d-toggle-none"
+                                id="sharePost"
+                              >
+                                <i className="bi bi-three-dots-vertical"></i>
+                              </Dropdown.Toggle>
+                              <Dropdown.Menu
+                                style={{
+                                  boxShadow: "2px 2px 2px gray",
+                                  placeItems: "end",
+                                }}
+                              >
+                                <Dropdown.Item className="d-flex flex-row justify-content-between">
+                                  <i className="bi bi-share-fill"></i>
+                                  <i class="fa-solid fa-list"></i>
+                                  <div
+                                    className=""
+                                    // style={{ marginLeft: "15px", marginTop: "2px" }}
+                                  >
+                                    Share Post
+                                  </div>
+                                </Dropdown.Item>
+                              </Dropdown.Menu>
+                            </Dropdown>
+                          </div>
+                          <div className="card-body overflow-none">
+                            <h5 className="card-title fw-bolder">
+                              {item.title}
+                            </h5>
+                            <p className="card-text">
+                              {item.body.substring(0, 25)} ....
+                            </p>
+                            <Link
+                              to={`/blogdetail/${item._id}`}
+                              className="d-flex justify-content-end text-decoration-none"
+                            >
+                              <div className="btn btn-light border-dark">
+                                See details
+                              </div>
+                            </Link>
+                          </div>
+                          {/* <div className="card-footer"> */}
+                          {/* <Link
+            to={`/blogdetail/${item._id}`}
+            className="d-flex justify-content-end text-decoration-none"
+          >
+            <div className="btn btn-light border-dark">Read more</div>
+          </Link> */}
+                          {/* </div> */}
+                          {/* <hr></hr> */}
+                        </div>
+                      ) : (
+                        "not publish"
+                      )}
+                    </div>
+                  ) : (
+                    ""
+                  )
+                ) : (
+                  ""
+                )
+              )}
         </div>
       </div>
     </div>

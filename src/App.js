@@ -33,6 +33,7 @@ import SuperAdmin from "./Components/SuperAdmin";
 import ApprovedByAdmin from "./Components/UserDashComp/PostUpdate/ApprovedByAdmin";
 import ViewPost from "./Components/UserDashComp/PostUpdate/ViewPost";
 import ViewProfile from "./Components/UserDashComp/ViewProfile";
+import ByCategory from "./ByCategory";
 
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -135,7 +136,9 @@ function App() {
             element={<Home name={{ page: "/// Home Page ///" }}></Home>}
           ></Route>
           <Route path="/about" element={<About></About>}></Route>
-          <Route path="/blogg" element={<Blog></Blog>}></Route>
+          {/* <Route path="/blogg" element={<Blog></Blog>}></Route> */}
+          <Route path="/blogg/:category" element={<Blog></Blog>}></Route>
+
           <Route path="/contact" element={<Contact></Contact>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/signup" element={<SignUp></SignUp>}></Route>
@@ -197,6 +200,10 @@ function App() {
             path="/postupdate/:id"
             element={<UpdatePost></UpdatePost>}
           ></Route>
+          {/* <Route
+            path="/get/post/category"
+            element={<ByCategory></ByCategory>}
+          ></Route> */}
           <Route
             path="/delpost/:id"
             element={<DeletePost></DeletePost>}

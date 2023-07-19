@@ -4,15 +4,30 @@ import { Link } from "react-router-dom";
 import logoo from "./Components/Logos/logoo.jpg";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import axios from "axios";
+import { useEffect, useState } from "react";
 // import logo1 from "./Components/Logos/logo1.JPGs"
 
 function NavvBar() {
+  let blogAll = "all";
   const navgate = useNavigate();
   const handleLogout = (e) => {
     localStorage.clear();
     // localStorage.setItem("isloggedIn", false);
     navgate("/");
   };
+  const [showCategory, setShowCategory] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://127.0.0.1:4000/api/project/get/category")
+      .then((res) => {
+        console.log(res.data.data);
+        setShowCategory(res.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
   return (
     <div>
       <Navbar
@@ -51,7 +66,7 @@ function NavvBar() {
                 </Link>
               </NavItem>
               <NavItem>
-                <Link to="/blogg" className="nav-link">
+                <Link to={`/blogg/${blogAll}`} className="nav-link">
                   Blog
                 </Link>
               </NavItem>
@@ -61,7 +76,18 @@ function NavvBar() {
                 </Link>
               </NavItem>
               <NavDropdown title="Category" id="navv-dropdown">
-                <NavDropdown.Item>
+                {showCategory.map((item) => (
+                  <NavDropdown.Item key={item.id}>
+                    <Link
+                      to={`/blogg/${item.categoryName}`}
+                      // to={"/blogg/:" + all}
+                      className="nav-link"
+                    >
+                      {item.categoryName}
+                    </Link>
+                  </NavDropdown.Item>
+                ))}
+                {/* <NavDropdown.Item>
                   <Link to="/about" className="nav-link">
                     A-Category
                   </Link>
@@ -70,7 +96,7 @@ function NavvBar() {
                   <Link to="/" className="nav-link">
                     B-Category
                   </Link>
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
               </NavDropdown>
               <NavItem style={{ marginRight: "160px" }}>
                 <Link to="/contact" className="nav-link">
