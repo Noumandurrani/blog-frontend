@@ -9,6 +9,7 @@ function Dp({ showPopupProfile, setShowPopupProfile }) {
   const [userData, setUserData] = useState({});
   const navgate = useNavigate();
   const [change, setChange] = useState(false);
+  const [profilePreview, setProfilePreview] = useState(null);
 
   useEffect(() => {
     axios
@@ -61,18 +62,36 @@ function Dp({ showPopupProfile, setShowPopupProfile }) {
         <Modal.Title>Profile photo</Modal.Title>
       </Modal.Header>
       <Modal.Body className="text-center">
-        <img
-          src={"http://127.0.0.1:4000/" + userData.profile} //"http://127.0.0.1:4000/" + userData.profile
-          alt="dp"
-          style={{
-            height: "180px",
-            borderRadius: "100px",
-            width: "180px",
-            marginBottom: "20px",
-            // boxShadow: "5px 5px 5px black",
-          }}
-          className="border border-light border-4"
-        ></img>
+        {profilePreview && (
+          <img
+            // src={"http://127.0.0.1:4000/" + userData.profile} //"http://127.0.0.1:4000/" + userData.profile
+            src={profilePreview}
+            alt="dp"
+            style={{
+              height: "180px",
+              borderRadius: "100px",
+              width: "180px",
+              marginBottom: "20px",
+              // boxShadow: "5px 5px 5px black",
+            }}
+            className="border border-light border-4"
+          ></img>
+        )}
+        {!profilePreview && (
+          <img
+            src={"http://127.0.0.1:4000/" + userData.profile} //"http://127.0.0.1:4000/" + userData.profile
+            // src={profilePreview}
+            alt="dp"
+            style={{
+              height: "180px",
+              borderRadius: "100px",
+              width: "180px",
+              marginBottom: "20px",
+              // boxShadow: "5px 5px 5px black",
+            }}
+            className="border border-light border-4"
+          ></img>
+        )}
       </Modal.Body>
       <Modal.Footer>
         <form onChange={handleSaveBtn} onSubmit={handleSetProfile}>
@@ -83,6 +102,14 @@ function Dp({ showPopupProfile, setShowPopupProfile }) {
               type="file"
               onChange={(e) => {
                 setProfile(e.target.files[0]);
+                const filee = e.target.files[0];
+                if (filee) {
+                  const profileReader = new FileReader();
+                  profileReader.onloadend = () => {
+                    setProfilePreview(profileReader.result);
+                  };
+                  profileReader.readAsDataURL(filee);
+                }
               }}
               className="d-none"
             ></input>

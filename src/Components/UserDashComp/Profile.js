@@ -53,7 +53,7 @@ function Profile() {
   return (
     <div
       style={{
-        marginTop: "15px",
+        marginTop: "90px",
         display: "flex",
         // justifyContent: "center",
         alignItems: "center",
@@ -70,6 +70,7 @@ function Profile() {
             borderRadius: "100px",
             width: "180px",
             marginBottom: "20px",
+            cursor: "pointer",
             // boxShadow: "5px 5px 5px black",
           }}
           className="border border-light border-4"

@@ -9,6 +9,7 @@ function CreatePost() {
   const [body, setBody] = useState();
   const [author, setAuthor] = useState();
   const [image, setImage] = useState();
+  const [imagePreview, setImagePreview] = useState(null);
   const [category, setCategory] = useState("");
   const [otherValue, setOtherValue] = useState("");
   const [showCategory, setShowCategory] = useState([]);
@@ -65,35 +66,108 @@ function CreatePost() {
     navgate("/offcanvas");
   };
   return (
-    <div style={{ marginTop: 120 }}>
+    <div style={{ marginTop: 140 }}>
       <div className="container">
-        <h1>Create Post</h1>
-        <img src={image}></img>
+        <h3 className="">Create Post</h3>
+
         <form onSubmit={handleSubmit} method="post">
-          <label>Title</label>
+          <label
+            style={{
+              backgroundColor: "black",
+              padding: "2px 100px 2px 100px",
+              color: "white",
+            }}
+          >
+            Title
+          </label>
           <input
-            className="form-control border-dark"
+            placeholder="post title"
+            className="form-control border"
             type="text"
             value={title}
             onChange={(e) => {
               setTitle(e.target.value);
             }}
+            style={{ backgroundColor: "#e5e5e5" }}
           ></input>
           <br></br>
-          <label>Image</label>
-          <input
-            className="form-control border-dark"
-            type="file"
-            name="image"
-            onChange={(e) => {
-              setImage(e.target.files[0]);
+          <label
+            style={{
+              backgroundColor: "black",
+              padding: "2px 77px 2px 77px",
+              color: "white",
             }}
-          ></input>
+          >
+            Post Image
+          </label>
+          <div
+            className="rounded border text-center"
+            style={{ height: "339px", backgroundColor: "#e5e5e5" }}
+          >
+            {imagePreview && (
+              <img
+                src={imagePreview}
+                alt="uploaded image"
+                style={{
+                  maxWidth: "600px",
+                  position: "relative",
+                  height: "337px",
+                }}
+              ></img>
+            )}
+            <label
+              style={{
+                position: "absolute",
+                zIndex: 100,
+                left: "391px",
+                bottom: "10px",
+              }}
+            >
+              <i
+                className="border border-light mx-2 rounded text-light opacity-75"
+                style={{
+                  // width: "400px",
+                  padding: "10px 176px 10px 176px",
+                  backgroundColor: "#000000",
+                  cursor: "pointer",
+                }}
+              >
+                Upload image
+              </i>
+              <input
+                className="form-control  d-none"
+                type="file"
+                name="image"
+                accept="image/*"
+                onChange={(e) => {
+                  setImage(e.target.files[0]);
+                  const filee = e.target.files[0];
+                  if (filee) {
+                    const imageReader = new FileReader();
+                    imageReader.onloadend = () => {
+                      setImagePreview(imageReader.result);
+                    };
+                    imageReader.readAsDataURL(filee);
+                  }
+                }}
+              ></input>
+            </label>
+          </div>
 
           <br></br>
-          <label>Author</label>
+          <label
+            style={{
+              backgroundColor: "black",
+              padding: "2px 94px 2px 94px",
+              color: "white",
+            }}
+          >
+            Author
+          </label>
           <input
-            className="form-control border-dark"
+            style={{ backgroundColor: "#e5e5e5" }}
+            placeholder="author name"
+            className="form-control "
             type="text"
             value={author}
             onChange={(e) => {
@@ -101,9 +175,19 @@ function CreatePost() {
             }}
           ></input>
           <br></br>
-          <label>Description</label>
+          <label
+            style={{
+              backgroundColor: "black",
+              padding: "2px 79px 2px 79px",
+              color: "white",
+            }}
+          >
+            Description
+          </label>
           <textarea
-            className="form-control border-dark"
+            style={{ backgroundColor: "#e5e5e5" }}
+            placeholder="add content here"
+            className="form-control "
             value={body}
             type="text"
             onChange={(e) => {
@@ -112,9 +196,18 @@ function CreatePost() {
           ></textarea>
           <br></br>
           {/* /////////////////category */}
-          <label>Category</label>
+          <label
+            style={{
+              backgroundColor: "black",
+              padding: "2px 87px 2px 87px",
+              color: "white",
+            }}
+          >
+            Category
+          </label>
           <select
-            className="form-control border-dark"
+            style={{ backgroundColor: "#e5e5e5" }}
+            className="form-control"
             // type="text"
             value={category}
             onChange={(e) => {
@@ -133,8 +226,8 @@ function CreatePost() {
           </select>
           {category === "other" && (
             <input
-              className="form-control mt-2"
-              placeholder="write your own category"
+              className="form-control mt-2 text-lowercase"
+              placeholder="write your own category, use lowercase letters"
               type="text"
               value={otherValue}
               onChange={handleOther}
@@ -143,7 +236,7 @@ function CreatePost() {
           {/* /////////////////////// */}
           <br></br>
           <input
-            className="btn btn-light border border-dark"
+            className="btn btn-secondary border border-secondary"
             value="Submit"
             type="submit"
           ></input>

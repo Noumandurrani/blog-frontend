@@ -33,16 +33,22 @@ function ViewPost() {
         <Modal.Header closeButton>
           <Modal.Title>{idData.title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="d-flex flex-column align-items-center">
           {/* <h4>{idData.author}</h4> */}
           <img
-            style={{ width: "100%" }}
+            className="border border-secondary border-3"
+            style={{ width: "50%", borderRadius: "5px", height: 400 }}
             src={"http://127.0.0.1:4000/" + idData.image}
           ></img>
           <br></br>
           <br></br>
 
-          <p>{idData.body}</p>
+          <p className=" mx-4" style={{ textAlign: "between" }}>
+            {idData.body}
+          </p>
+          <h6 className="text-danger" style={{ textAlign: "" }}>
+            Author : {idData.author}
+          </h6>
         </Modal.Body>
         <ModalFooter>
           <Button variant="secondary" onClick={handleClose}>
