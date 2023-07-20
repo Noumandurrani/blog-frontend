@@ -6,6 +6,8 @@ import car from "./Logos/car.jpg";
 import R from "./Logos/R.jpeg";
 import LatestPost from "./HomeComp/LatestPost";
 function Home(props) {
+  let blogAll = "all";
+
   return (
     <div className="text-center" style={{ marginTop: 120 }}>
       {/* <h3>{props.name.page}</h3> */}
@@ -119,7 +121,7 @@ function Home(props) {
       <br></br>
       <h2 className="mb-4">My Latest Posts</h2>
       <LatestPost></LatestPost>
-      <Link to="/blogg">
+      <Link to={`/blogg/${blogAll}`}>
         <button className="btn border border-dark px-5 pb-3 pt-3">
           show more
         </button>

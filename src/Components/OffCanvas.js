@@ -224,7 +224,7 @@ function OffCanvas() {
                         alt="dp"
                         style={{
                           width: "40px",
-
+                          height: "40px",
                           borderRadius: "20px",
                         }}
                         className="border border-dark border-3"
@@ -261,7 +261,7 @@ function OffCanvas() {
                     <div className="card-body overflow-none">
                       <h5 className="card-title fw-bolder">{item.title}</h5>
                       <p className="card-text">
-                        {item.body.substring(0, 25)} ....
+                        {item.body.substring(0, 35)} . . . .
                       </p>
                       <Link
                         to={`/blogdetail/${item._id}`}

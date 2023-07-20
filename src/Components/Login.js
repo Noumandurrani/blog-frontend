@@ -21,7 +21,9 @@ function Login() {
       .then((res) => {
         console.log("login response", res.data);
         console.log("user_id : ", res.data.data._id);
+        console.log("user dp: ", res.data.data.profile);
         localStorage.setItem("userId", res.data.data._id);
+        localStorage.setItem("userDp", res.data.data.profile);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("isloggedIn", true);
         console.log(localStorage.getItem("token"));

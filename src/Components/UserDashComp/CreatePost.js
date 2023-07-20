@@ -14,6 +14,8 @@ function CreatePost() {
   const [otherValue, setOtherValue] = useState("");
   const [showCategory, setShowCategory] = useState([]);
   const userId = localStorage.getItem("userId");
+  const userDp = localStorage.getItem("userDp");
+  console.log("userDp: ", userDp);
   const handleOther = (e) => {
     setCategory("other");
     setOtherValue(e.target.value);
@@ -51,6 +53,7 @@ function CreatePost() {
     formData.append("image", image);
     formData.append("category", newCategory);
     formData.append("user_id", userId);
+    formData.append("user_dp", userDp);
 
     const config = {
       headers: { "content-type": "multipart/form-data" },

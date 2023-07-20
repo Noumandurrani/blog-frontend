@@ -137,22 +137,29 @@ function Blog() {
                           justifyContent: "space-between",
                         }}
                       >
-                        {/* <img
-                        // key={getDp.id}
-                        src={"http://127.0.0.1:4000/" + getDp.profile}
-                        alt="dp"
-                        style={{
-                          width: "40px",
-                          boxShadow: "2px 2px 2px gray, -2px -2px 2px gray",
-                          borderRadius: "20px",
-                        }}
-                      ></img> */}
+                        <img
+                          // key={getDp.id}
+                          src={"http://127.0.0.1:4000/" + item.user_dp}
+                          alt="dp"
+                          style={{
+                            width: "40px",
+                            height: "40px",
+                            boxShadow: "2px 2px 2px gray, -2px -2px 2px gray",
+                            borderRadius: "20px",
+                          }}
+                        ></img>
                         <p className="">{item.author}</p>
-                        <Dropdown>
+                        <Dropdown
+                          className=""
+                          style={{ borderLeft: "1px solid black" }}
+                        >
                           <Dropdown.Toggle
-                            variant="primary"
-                            className=" bg-light text-dark border-0 d-toggle-none"
+                            className="text-dark drop-tgl"
                             id="sharePost"
+                            style={{
+                              boxShadow: "none",
+                              backgroundColor: "white",
+                            }}
                           >
                             <i className="bi bi-three-dots-vertical"></i>
                           </Dropdown.Toggle>
@@ -164,13 +171,7 @@ function Blog() {
                           >
                             <Dropdown.Item className="d-flex flex-row justify-content-between">
                               <i className="bi bi-share-fill"></i>
-                              <i class="fa-solid fa-list"></i>
-                              <div
-                                className=""
-                                // style={{ marginLeft: "15px", marginTop: "2px" }}
-                              >
-                                Share Post
-                              </div>
+                              <div className="">Share Post</div>
                             </Dropdown.Item>
                           </Dropdown.Menu>
                         </Dropdown>
@@ -178,7 +179,7 @@ function Blog() {
                       <div className="card-body overflow-none">
                         <h5 className="card-title fw-bolder">{item.title}</h5>
                         <p className="card-text">
-                          {item.body.substring(0, 60)} ....
+                          {item.body.substring(0, 35)} . . . .
                         </p>
                         <Link
                           to={`/blogdetail/${item._id}`}
