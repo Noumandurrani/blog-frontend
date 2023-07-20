@@ -34,7 +34,7 @@ function ViewProfile() {
       {/* <h4>ViewProfile</h4> */}
       <Modal show={show} onHide={handleClose} fullscreen={true}>
         <Modal.Header closeButton>
-          <Modal.Title>{`${idData.firstName} ${idData.lastName}`}</Modal.Title>
+          <Modal.Title className="bg-black text-light px-5 pt-2 pb-2 rounded">{`${idData.firstName} ${idData.lastName}`}</Modal.Title>
         </Modal.Header>
         <Modal.Body className="text-center">
           <img

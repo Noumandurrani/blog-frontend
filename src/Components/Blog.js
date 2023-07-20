@@ -178,7 +178,7 @@ function Blog() {
                       <div className="card-body overflow-none">
                         <h5 className="card-title fw-bolder">{item.title}</h5>
                         <p className="card-text">
-                          {item.body.substring(0, 25)} ....
+                          {item.body.substring(0, 60)} ....
                         </p>
                         <Link
                           to={`/blogdetail/${item._id}`}
