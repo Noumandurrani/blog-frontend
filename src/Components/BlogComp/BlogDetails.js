@@ -19,7 +19,7 @@ function BlogDetails() {
   }, []);
   ///////////
   return (
-    <div style={{ marginTop: 120 }}>
+    <div style={{ marginTop: 120, marginBottom: 10 }}>
       <h3
         className=" text-center"
         style={{
@@ -33,14 +33,13 @@ function BlogDetails() {
         The Blog Details
       </h3>
       {/* {id} */}
-      <h2></h2>
       {/* <hr></hr> */}
       <div className="container" style={{ textAlign: "justify" }}>
         <div className="row justify-content-center">
           <div className="col-lg-8 ">
             <div
               style={{ width: "" }}
-              className=""
+              className="mt-3"
               //   key={idData.id}
             >
               <img
@@ -49,15 +48,40 @@ function BlogDetails() {
               ></img>
               <br></br>
               <br></br>
+              <br></br>
 
               <div className="">
                 <h2 className="fw-bolder">{idData.title}</h2>
+
                 <p className="">{idData.body}</p>
+                <br></br>
+                <br></br>
+                <div className="d-flex justify-content-around">
+                  {localStorage.getItem("isloggedIn") &&
+                  idData.is_approvedByAdmin === true ? (
+                    <h5
+                      className="text-light bg-secondary rounded text-end pt-2 pb-2 px-4"
+                      style={{ backgroundColor: "black" }}
+                    >
+                      Approved
+                    </h5>
+                  ) : (
+                    localStorage.getItem("isloggedIn") && (
+                      <h5 className="text-light bg-primary rounded text-end pt-2 pb-2 px-4">
+                        Pending
+                      </h5>
+                    )
+                  )}
+                  <h5 className="text-danger d-flex text-end  pt-2 pb-2 px-4">
+                    Author: {idData.author}
+                  </h5>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <br></br>
       <br></br>
     </div>
   );

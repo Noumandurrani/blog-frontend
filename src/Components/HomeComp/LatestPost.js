@@ -49,18 +49,22 @@ function LatestPost() {
                     className="card-header"
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <img
-                      // key={getDp.id}
-                      src={"http://127.0.0.1:4000/" + item.user_dp}
-                      alt="dp"
-                      style={{
-                        width: "40px",
-                        height: "40px",
-                        boxShadow: "2px 2px 2px gray, -2px -2px 2px gray",
-                        borderRadius: "20px",
-                      }}
-                    ></img>
-                    <p className="">{item.author}</p>
+                    <Link to={`/viewuser/${item.user_id}`}>
+                      <img
+                        // key={getDp.id}
+                        src={"http://127.0.0.1:4000/" + item.user_dp}
+                        alt="dp"
+                        style={{
+                          width: "40px",
+                          height: "40px",
+                          // boxShadow: "2px 2px 2px gray, -2px -2px 2px gray",
+                          borderRadius: "20px",
+                        }}
+                        className="border border-dark border-3"
+                      ></img>
+                    </Link>
+
+                    {/* <p className="">{item.author}</p> */}
                     <Dropdown
                       className=""
                       style={{ borderLeft: "1px solid black" }}
@@ -99,7 +103,7 @@ function LatestPost() {
                       to={`/blogdetail/${item._id}`}
                       className="d-flex justify-content-end text-decoration-none"
                     >
-                      <div className="btn btn-light border-dark">
+                      <div className="btn btn-dark border-dark">
                         See details
                       </div>
                     </Link>

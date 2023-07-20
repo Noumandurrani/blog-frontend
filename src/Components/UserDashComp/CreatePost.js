@@ -69,10 +69,18 @@ function CreatePost() {
     navgate("/offcanvas");
   };
   return (
-    <div style={{ marginTop: 140 }}>
+    <div style={{ marginTop: 120 }}>
+      <h3
+        className="text-center"
+        style={{
+          backgroundColor: "#dfbfb1",
+          fontSize: "70px",
+          padding: "40px 0 40px 0",
+        }}
+      >
+        Create Post
+      </h3>
       <div className="container">
-        <h3 className="">Create Post</h3>
-
         <form onSubmit={handleSubmit} method="post">
           <label
             style={{
@@ -105,7 +113,11 @@ function CreatePost() {
           </label>
           <div
             className="rounded border text-center"
-            style={{ height: "339px", backgroundColor: "#e5e5e5" }}
+            style={{
+              height: "339px",
+              backgroundColor: "#e5e5e5",
+              position: "relative",
+            }}
           >
             {imagePreview && (
               <img
@@ -113,7 +125,7 @@ function CreatePost() {
                 alt="uploaded image"
                 style={{
                   maxWidth: "600px",
-                  position: "relative",
+
                   height: "337px",
                 }}
               ></img>
@@ -122,8 +134,8 @@ function CreatePost() {
               style={{
                 position: "absolute",
                 zIndex: 100,
-                left: "391px",
-                bottom: "10px",
+                left: "324px",
+                bottom: "15px",
               }}
             >
               <i
@@ -170,7 +182,7 @@ function CreatePost() {
           <input
             style={{ backgroundColor: "#e5e5e5" }}
             placeholder="author name"
-            className="form-control "
+            className="form-control border"
             type="text"
             value={author}
             onChange={(e) => {
@@ -188,9 +200,9 @@ function CreatePost() {
             Description
           </label>
           <textarea
-            style={{ backgroundColor: "#e5e5e5" }}
+            style={{ backgroundColor: "#e5e5e5", height: "300px" }}
             placeholder="add content here"
-            className="form-control "
+            className="form-control border"
             value={body}
             type="text"
             onChange={(e) => {
@@ -210,7 +222,7 @@ function CreatePost() {
           </label>
           <select
             style={{ backgroundColor: "#e5e5e5" }}
-            className="form-control"
+            className="form-control border"
             // type="text"
             value={category}
             onChange={(e) => {
@@ -239,7 +251,7 @@ function CreatePost() {
           {/* /////////////////////// */}
           <br></br>
           <input
-            className="btn btn-secondary border border-secondary"
+            className="btn btn-secondary border"
             value="Submit"
             type="submit"
           ></input>

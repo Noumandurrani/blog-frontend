@@ -34,6 +34,7 @@ import ApprovedByAdmin from "./Components/UserDashComp/PostUpdate/ApprovedByAdmi
 import ViewPost from "./Components/UserDashComp/PostUpdate/ViewPost";
 import ViewProfile from "./Components/UserDashComp/ViewProfile";
 import ByCategory from "./ByCategory";
+import UserAllPosts from "./Components/UserDashComp/PostUpdate/UserAllPosts";
 
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -195,6 +196,16 @@ function App() {
           <Route
             path="/viewuser/:id"
             element={<ViewProfile></ViewProfile>}
+          ></Route>
+          <Route
+            path={`/userpostsall/:userid`}
+            element={
+              localStorage.getItem("isloggedIn") ? (
+                <UserAllPosts></UserAllPosts>
+              ) : (
+                <Login></Login>
+              )
+            }
           ></Route>
           <Route
             path="/postupdate/:id"

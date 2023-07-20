@@ -229,7 +229,7 @@ function OffCanvas() {
                         }}
                         className="border border-dark border-3"
                       ></img>
-                      <p className="">{item.author}</p>
+                      {/* <p className="">{item.author}</p> */}
 
                       <Dropdown
                         className=""
@@ -278,16 +278,18 @@ function OffCanvas() {
               {data == "" ? (
                 <h4 className="text-danger">No Posts</h4>
               ) : (
-                <MDBBtn
-                  className="btn bg-light fw-bold fs-5 text-black"
-                  style={{
-                    width: "100%",
-                    padding: "10px",
-                    // boxShadow: "2px 2px 2px gray, -2px -2px 2px ",
-                  }}
-                >
-                  See more
-                </MDBBtn>
+                <Link to={`/userpostsall/${userId}`}>
+                  <MDBBtn
+                    className="btn bg-light fw-bold fs-5 text-black"
+                    style={{
+                      width: "100%",
+                      padding: "10px",
+                      // boxShadow: "2px 2px 2px gray, -2px -2px 2px ",
+                    }}
+                  >
+                    See more
+                  </MDBBtn>
+                </Link>
               )}
             </div>
 

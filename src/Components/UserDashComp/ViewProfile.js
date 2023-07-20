@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 function ViewProfile() {
+  const blogAll = "all";
   const [show, setShow] = useState(true);
   const navgate = useNavigate();
   const { id } = useParams();
@@ -12,7 +13,11 @@ function ViewProfile() {
 
   const handleClose = () => {
     setShow(false);
-    navgate("/superadmin");
+    if (localStorage.getItem("isloggedIn")) {
+      navgate("/superadmin");
+    } else {
+      navgate("/blogg/" + blogAll);
+    }
   };
 
   //////user profile details
@@ -40,11 +45,19 @@ function ViewProfile() {
           <img
             style={{ width: "350px", height: "350px" }}
             src={"http://127.0.0.1:4000/" + idData.profile}
+            className="rounded border border-dark"
           ></img>
           <br></br>
           <br></br>
-
-          <p>{idData.email}</p>
+          {/* <br></br> */}
+          <div className="d-flex justify-content-end ">
+            <h5
+              className="text-light pt-3 pb-3 px-4 rounded"
+              style={{ backgroundColor: "black" }}
+            >
+              Email: {idData.email}
+            </h5>
+          </div>
         </Modal.Body>
         <ModalFooter>
           <Button variant="secondary" onClick={handleClose}>
